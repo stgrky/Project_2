@@ -1,0 +1,27 @@
+{
+  "name": "project_2",
+  "version": "1.0.0",
+  "description": "Healthcare App for healthcare professionals to find inforation specifically regarding COVID-19 patients.",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "mysql2": "^2.1.0",
+    "sequelize": "^5.21.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grantkyle/Project_2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/grantkyle/Project_2/issues"
+  },
+  "homepage": "https://github.com/grantkyle/Project_2#readme"
+}
