@@ -36,7 +36,7 @@
 
     * mysql2: 
 
-2. Users will need to install mySQL in order to create a database using the burgers_db schema and seed files.
+2. Users will need to install mySQL in order to create a database.
 
 3. Users should enter their own personal mySQL password in the connection.js file. 
 
