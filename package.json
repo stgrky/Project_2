@@ -4,6 +4,7 @@
   "description": "Healthcare App for healthcare professionals to find inforation specifically regarding COVID-19 patients.",
   "main": "server.js",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-handlebars": "^3.1.0",
