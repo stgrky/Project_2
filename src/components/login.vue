@@ -1,4 +1,4 @@
-<template>
+<template id = "body">
     <div id="login">
         <h1>Login</h1>
         <input type="text" name="username" v-model="input.username" placeholder="Username" />

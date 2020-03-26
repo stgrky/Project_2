@@ -14,8 +14,8 @@
             return {
                 authenticated: false,
                 mockAccount: {
-                    username: "usernames",
-                    password: "passwords"
+                    username: "secureuser",
+                    password: "securepassword"
                 }
             }
         },
@@ -38,7 +38,8 @@
 
 <style>
     body {
-        background-color: #F0F0F0;
+        background-color: black;
+    
     }
     h1 {
         padding: 0;
