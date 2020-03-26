@@ -14,13 +14,14 @@
             return {
                 authenticated: false,
                 mockAccount: {
-                    username: "username",
-                    password: "password"
+                    username: "usernames",
+                    password: "passwords"
                 }
             }
         },
         mounted() {
             if(!this.authenticated) {
+                console.log(this.$router)
                 this.$router.replace({ name: "login" });
             }
         },
