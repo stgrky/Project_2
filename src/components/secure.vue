@@ -14,8 +14,17 @@
       <input id="bubbles" type="text" v-model="search" placeholder="Patient or Doctor Name" />
       <button id="bubbles-two" type="button" v-on:click="patientSearch()">Search</button>
       
-      <div v-for="patient in patients" :key="patient.id" class="single-patient">
-        <h2>{{patient.name | to-uppercase}}</h2>
+      <div id="table" v-for="Patients in Patients" :key="Patients.id" class="single-patient">
+        <!-- <h2>{{patient.name | to-uppercase}}</h2> -->
+        <td>{{ Patients.id }}</td>
+        <td>{{ Patients.name }}</td>
+        <td>{{ Patients.phone_number }}</td>
+        <!-- <td>{{ Patients.city }}</td>
+        <td>{{ Patients.symptoms }}</td>              
+        <td>{{ Patients.infected }}</td>
+        <td>{{ Patients.treatment }}</td>
+        <td>{{ Patients.admitted }}</td>
+        <td>{{ Patients.doctor }}</td> -->
       </div>
     </div>
 
@@ -25,11 +34,27 @@
       <div id="app">
         {{ info }}
       </div>
-    </div>
   </div>
+
 </template>
 
 <script>
+// import Vue from "vue";
+
+// var patientTable = new Vue({
+//   el: "#table",
+//   data: {
+//     Patients: [
+//       { id: 1,
+//         name: "Bar",
+//         phone_number: 512-555-5555
+//       }
+//     ]
+//   }
+// });
+
+
+
 export default {
   name: "Patients",
   data() {
@@ -56,6 +81,7 @@ export default {
   }
 };
 </script>
+
 
 <style scoped>
 #secure {

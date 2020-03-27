@@ -34,7 +34,7 @@ module.exports = function(sequelize, DataTypes) {
       doctor: DataTypes.STRING,
     });
 
-    Patients.associate = function (models) {
+    Patients.associate = function(models) {
         // a Patient should belong to an Doctor
         // A Patient can't be created without a Doctor due to the foreign key constraint
         Patients.belongsTo(models.Doctor, {
