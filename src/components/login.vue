@@ -9,14 +9,14 @@
 
 <script>
     export default {
-        name: 'login',
+        name: "login",
         data() {
             return {
                 input: {
                     username: "",
                     password: ""
                 }
-            }
+            };
         },
         methods: {
             login() {
@@ -32,7 +32,7 @@
                 }
             }
         }
-    }
+    };
 </script>
 
 <style>

@@ -2,8 +2,8 @@ var db = require("../models");
 
 module.exports = function(app) {
   // Find all Doctors
-  app.get("/api/doctors", function(req, res) {
-    db.Doctor.findAll({}).then(function(dbDoctor) {
+	app.get("/api/doctors", function(req, res) {
+		db.Doctor.findAll({}).then(function(dbDoctor) {
       res.json(dbDoctor);
     });
   });

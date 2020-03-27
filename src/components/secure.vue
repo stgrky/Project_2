@@ -9,11 +9,11 @@
 
 <script>
     export default {
-        name: 'Secure',
+        name: "Secure",
         data() {
             return {};
         }
-    }
+    };
 </script>
 
 <style scoped>
