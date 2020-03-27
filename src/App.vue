@@ -9,7 +9,7 @@
 
 <script>
     export default {
-        name: 'App',
+        name: "App",
         data() {
             return {
                 authenticated: false,
@@ -17,11 +17,11 @@
                     username: "secureuser",
                     password: "securepassword"
                 }
-            }
+            };
         },
         mounted() {
             if(!this.authenticated) {
-                console.log(this.$router)
+                console.log(this.$router);
                 this.$router.replace({ name: "login" });
             }
         },
@@ -33,7 +33,7 @@
                 this.authenticated = false;
             }
         }
-    }
+    };
 </script>
 
 <style>
