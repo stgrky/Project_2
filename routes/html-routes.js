@@ -1,12 +1,12 @@
-var path = require("path");
+// var path = require("path");
 
-// Routes
-module.exports = function(app) {
+// // Routes
+// module.exports = function(app) {
 
-  app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "./index.html"));
-  });
+//   app.get("/", function(req, res) {
+//     res.sendFile(path.join(__dirname, "./index.html"));
+//   });
 
-  // app.get("/patients")
+//   // app.get("/patients")
 
-};
+// };
