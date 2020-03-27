@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "axios": "^0.19.2",
     "bootstrap-vue": "^2.8.0",
     "core-js": "^3.6.4",
     "dotenv": "^8.2.0",
