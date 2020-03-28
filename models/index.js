@@ -1,11 +1,11 @@
 "use strict";
 
-var fs = require("fs");
-var path = require("path");
-var Sequelize = require("sequelize");
+const fs = require("fs"); // node.js way of reading thru the file system
+const path = require("path");// dealing with absolute and relative pathways
+const Sequelize = require("sequelize"); // need to create sequelize object and connect to database
 var basename = path.basename(module.filename);
 var env = process.env.NODE_ENV || "development";
-var config = require(__dirname + "/../config/config.json")[env];
+const config = require(__dirname + "/../config/config.json")[env];
 var db = {};
 
 if (config.use_env_variable) {
@@ -15,13 +15,13 @@ if (config.use_env_variable) {
 }
 
 fs
-  .readdirSync(__dirname)
-  .filter(function(file) {
+  .readdirSync(__dirname) // read through the current directoy and give us an array of files
+  .filter(function(file) { // filter files
     return (file.indexOf(".") !== 0) && (file !== basename) && (file.slice(-3) === ".js");
   })
-  .forEach(function(file) {
+  .forEach(function(file) {  // joing file with pathway and import it
     var model = sequelize["import"](path.join(__dirname, file));
-    db[model.name] = model;
+    db[model.name] = model; 
   });
 
 Object.keys(db).forEach(function(modelName) {
