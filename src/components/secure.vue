@@ -7,7 +7,6 @@
         <b-dropdown id="dropdown-1" text="Dropdown Button" class="m-md-2">
           <b-dropdown-item>Search by Doctor Name</b-dropdown-item>
           <b-dropdown-item>Search by Patient Name</b-dropdown-item>
-          
         </b-dropdown>
       </div>
       <input id="bubbles" type="text" v-model="search" placeholder="Patient or Doctor Name" />
@@ -17,15 +16,16 @@
       </div>
     </div>
     <div>
-    <b-table striped hover :items="items"></b-table>
-    <div id="app">
-  {{ info }}
-</div>
-  </div>
+      <b-table striped hover :items="items"></b-table>
+      <div id="app">{{ info }}</div>
+    </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+
+// The below code is a basic framework for searching for patient data
 export default {
   name: "Patients",
   data() {
@@ -35,7 +35,11 @@ export default {
       items: null
     };
   },
-  methods: {},
+
+  mounted () {
+      axios.get("https://api.coindesk.com/v1/bpi/currentprice.json%27")
+      .then(response => this.info = response.data);
+  },
 
   created() {
     this.$http.get("whereverJSONisStored").then(function(data) {
