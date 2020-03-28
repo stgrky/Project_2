@@ -21,7 +21,7 @@
         },
         mounted() {
             if(!this.authenticated) {
-                console.log(this.$router);
+                console.log("this: ", this.$router);
                 this.$router.replace({ name: "login" });
             }
         },
@@ -31,7 +31,7 @@
             },
             logout() {
                 this.authenticated = false;
-            }
+            },
         }
     };
 </script>
