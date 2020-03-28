@@ -4,7 +4,7 @@ module.exports = function(app) {
   // Find all Patients
   app.get("/api/patients", function(req, res) {
     db.Patients.findAll({}).then(function(dbPatients) {
-        console.log(dbPatients)
+        console.log(dbPatients);
       res.json(dbPatients);
     });
   });
