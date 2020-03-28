@@ -14,18 +14,12 @@
       <input id="bubbles" type="text" v-model="search" placeholder="Patient or Doctor Name" />
       <button id="bubbles-two" type="button" v-on:click="patientSearch()">Search</button>
       
-      <div id="table" v-for="Patients in Patients" :key="Patients.id" class="single-patient">
-        <!-- <h2>{{patient.name | to-uppercase}}</h2> -->
+      <!-- <div id="table" v-for="Patients in Patients" :key="Patients.id" class="single-patient">
         <td>{{ Patients.id }}</td>
         <td>{{ Patients.name }}</td>
         <td>{{ Patients.phone_number }}</td>
-        <!-- <td>{{ Patients.city }}</td>
-        <td>{{ Patients.symptoms }}</td>              
-        <td>{{ Patients.infected }}</td>
-        <td>{{ Patients.treatment }}</td>
-        <td>{{ Patients.admitted }}</td>
-        <td>{{ Patients.doctor }}</td> -->
-      </div>
+
+      </div> -->
     </div>
 
     <div>

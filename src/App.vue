@@ -31,7 +31,7 @@
             },
             logout() {
                 this.authenticated = false;
-            }
+            },
         }
     };
 </script>
