@@ -24,8 +24,8 @@
 
 <script>
 import axios from "axios";
+// The below is a basic framework for searching for patient data
 
-// The below code is a basic framework for searching for patient data
 export default {
   name: "Patients",
   data() {
@@ -37,7 +37,7 @@ export default {
   },
 
   mounted () {
-      axios.get("https://api.coindesk.com/v1/bpi/currentprice.json%27")
+      axios.get("http://dummy.restapiexample.com/api/v1/employees")
       .then(response => this.info = response.data);
   },
 
