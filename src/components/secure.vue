@@ -24,30 +24,15 @@
 
     <div>
       <b-table striped hover :items="items"></b-table>
-
-      <div id="app">
-        {{ info }}
-      </div>
+      <div id="app">{{ info }}</div>
+    </div>
   </div>
 
 </template>
 
 <script>
-// import Vue from "vue";
-
-// var patientTable = new Vue({
-//   el: "#table",
-//   data: {
-//     Patients: [
-//       { id: 1,
-//         name: "Bar",
-//         phone_number: 512-555-5555
-//       }
-//     ]
-//   }
-// });
-
-
+import axios from "axios";
+// The below is a basic framework for searching for patient data
 
 export default {
   name: "Patients",
@@ -58,7 +43,11 @@ export default {
       items: null
     };
   },
-  methods: {},
+
+  mounted () {
+      axios.get("http://dummy.restapiexample.com/api/v1/employees")
+      .then(response => this.info = response.data);
+  },
 
   created() {
     this.$http.get("whereverJSONisStored").then(function(data) {
