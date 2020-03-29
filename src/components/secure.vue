@@ -1,6 +1,6 @@
 <template>
   <div id="secure">
-    <h1>Patient List</h1>
+    <h1>Patient List - {{ search}} </h1>
     <h2>Search Your Patient Below</h2>
 
     <div id="bubbles">
@@ -40,25 +40,45 @@ export default {
     return {
       patients: [],
       search: "",
-      items: null
+      items: null,
+      info: null
     };
   },
 
   mounted () {
-      axios.get("http://dummy.restapiexample.com/api/v1/employees")
-      .then(response => this.info = response.data);
+      axios.get("http://localhost:8081/api/patients")
+      .then(response => {
+        this.info = response.data;
+      console.log("this: ", this.info);
+  });
+  },
+  
+  patientSearch() {
+    axios.get("http://localhost:8081/api/patients")
+      .then(response => {
+        this.info = response.data;
+        const searchData = this.info;
+        const results = searchData.find(function() {
+          return this.search.toLowerCase();
+        });
+        console.log("results: ",results);
+        //     return results;
+        //   } 
+        // });
+        console.log("this: ", this.info);
+      });
   },
 
   created() {
-    this.$http.get("whereverJSONisStored").then(function(data) {
-      this.patients = data.body.slice(0, 10);
+    this.$http.get("http://localhost:8081/api/patients").then(function(data) {
+      this.info = data.body.slice(0, 10);
     });
   },
   
   computed: {
     filteredPatients: function() {
-      return this.patients.filter(patient => {
-        return patient.name.match(this.search);
+      return this.info.filter(Patients => {
+        return Patients.name.match(this.app);
       });
     }
   }
