@@ -3,7 +3,7 @@
     <h1>Patient List - {{ search }} </h1>
     <h2>Search Your Patient Below</h2>
 
-    <input id="bubbles" type="text" v-model="search" placeholder="Patient or Doctor Name" />
+    <input id="bubbles" type="text" v-model="search" placeholder="Patient Name" />
     <button id="bubbles-two" type="button" v-on:click="patientSearch()">Search</button>   
 
   <div v-if="search">
@@ -53,6 +53,11 @@
             </table>
         </div>      
     </div>
+
+    <h1>Add a Patient - {{ search }} </h1>
+
+    <input id="bubbles-three" type="text" v-model="search" placeholder="Patient Name" />
+    <button id="bubbles-four" type="button" v-on:click="addPatient()">Add</button>   
   </div>
 
 
