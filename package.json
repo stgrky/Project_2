@@ -9,6 +9,7 @@
     "start": "npm run build && node server.js"
   },
   "dependencies": {
+    "@vue/cli": "^4.2.3",
     "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",
     "bootstrap-vue": "^2.8.0",
