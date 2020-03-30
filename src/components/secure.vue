@@ -135,12 +135,16 @@ export default {
           // response.send(results);
     },
     addPatient() {
-      // app.post("/api/patient", function(req, res) {
-      // console.log(req.body);
-      // db.Patients.create(req.body).then(function(dbPatients) {
-      //   res.json(dbPatients);
-      // });
-    // });
+      axios.post("http://localhost:8081/api/patient", {
+        name: ,
+        phone_number: ,
+        city: ,
+        symptoms: ,
+        infected: ,
+        treatment: ,
+        admitted: ,
+        doctor: ,
+      })
     }
   },
 
