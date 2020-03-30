@@ -77,14 +77,31 @@
         "Sorry, no patient on record found. Please try your search again."
     </div>
 
+    <h1>Add a Patient </h1>
 
-    <div>
-      <h1>Add a Patient - {{ addPatient }} </h1>
 
-      <input id="bubbles-three" type="text" v-model="addPatient.name" placeholder="Patient Name" />
-      <button id="bubbles-four" type="button" v-on:click="addPatient()">Add</button>   
+    <input id="bubble-three" type="text" v-model="name" placeholder="Patient Name" />
+    <!-- <input id="bubble-three" type="text" v-model="addPatient.Id" placeholder="ID" /> -->
+    <input id="bubble-three" type="text" v-model="phone_number" placeholder="Phone Number" />
+    <!-- <input id="bubble-three" type="text" v-model="addPatient.city" placeholder="City" />
+    <input id="bubble-three" type="text" v-model="addPatient.symptoms" placeholder="Symptoms" />
+    
+    <div class="form-questions">
+      <label for="admittedQuestion">Infected?</label>
+      <input type="radio" id="yes" value="Yes" v-model="addPatient.infectedQuestion"> Yes
+      <input type="radio" id="no" value="No" v-model="addPatient.infectedQuestion"> No
     </div>
-
+    
+    <input id="bubbles-three" type="text" v-model="addPatient.treatment" placeholder="Treatment" />
+    
+    <div class="form-questions">
+      <label for="admittedQuestion">Admitted?</label>
+      <input type="radio" id="yes" value="Yes" v-model="addPatient.admittedQuestion"> Yes
+      <input type="radio" id="no" value="No" v-model="addPatient.admittedQuestion"> No
+    </div>
+    
+    <input id="bubbles-three" type="text" v-model="addPatient.doctorLastName" placeholder="Doctor Last Name" /> -->
+    <button id="bubbles-four" type="button" v-on:click="addPatients()">Add</button>
   </div>
 
 
@@ -93,9 +110,8 @@
 
 <script>
 import axios from "axios";
-// import db from "../../models";
-// import app from "../../server";
 // The below is a basic framework for searching for patient data
+
 export default {
   name: "Patients",
   data() {
@@ -106,6 +122,7 @@ export default {
       info: null,
       allPatients: [],
       searchData: "",
+      addPatient: []
     };
   },
   mounted () {
@@ -127,29 +144,26 @@ export default {
           console.log("atx:",searchData);
           const results = searchData.find( (patient) => {
             return patient.name.toLowerCase() === this.search.toLowerCase();
+          }).catch(err => {
+            console.log("Error: ", err);
           });
           this.patients = results;
           // console.log("results: ", results);
           // response.send(results);
     },
-    addPatient() {
-      // axios.post("http://localhost:8081/api/patient", {
-      //   name: ,
-      //   phone_number: ,
-      //   city: ,
-      //   symptoms: ,
-      //   infected: ,
-      //   treatment: ,
-      //   admitted: ,
-      //   doctor: ,
-      // })
-    }
-  },
-  created() {
-    this.$http.get("http://localhost:8081/api/patients").then(function(data) {
-      this.info = data.body.slice(0, 10);
-    });
-  },
+    addPatients() {
+      this.addPatient.axios.post("http://localhost:8081/api/patients", {
+          name: document.name,
+          phone_number: document.phone_number
+      })
+      .then(function (response) {
+          this.addPatient.output = response.data;
+      })
+      .catch(function (error) {
+          this.output = error;
+      });
+  }
+  }
 };
 </script>
 
