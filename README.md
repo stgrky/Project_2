@@ -30,25 +30,25 @@ As a physician I would like easy access to COVID patient results across the stat
 
 1. To use the application, install (npm install) the following dependencies:
 
-    a. **bycryptjs:** allows passwords to be hashed
+    a. **bycryptjs:** Allows passwords to be hashed
 
-    b.  **bootstrap-vue:** front-end framework works with Vue.js
+    b.  **bootstrap-vue:** Front-end framework works with Vue.js
 
-    c.  **core-js:** modular standard library for JavaScript
+    c.  **core-js:** Modular standard library for JavaScript
 
     d.  **express:** Node.js framework
     
-    e.  **express-handlebars:** allows server-side manipulation of HTML ("templating engine")
+    e.  **express-handlebars:** Allows server-side manipulation of HTML ("templating engine")
 
     f. **mysql2:** Used with sequelize; allows access to MySQL database.
 
-    g. **routes:** translates each incoming HTTP request to an action call (static, public method in controller class)
+    g. **routes:** Translates each incoming HTTP request to an action call (static, public method in controller class)
 
     h.  **sequelize:** ORM designed for Node; allows for handling complex SQL database queries with JavaScript methods
 
-    i.  **vue:** is a progressive javascript framework for building user interfaces
+    i.  **vue:** A progressive javascript framework for building user interfaces
 
-    j. **vue-router:** allows users to switch between pages without refreshing.
+    j. **vue-router:** Allows users to switch between pages without refreshing.
 
 2. Users will need to install mySQL in order to create a database.
 
