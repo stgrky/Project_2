@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 // Dependencies
 // =============================================================
 const express = require("express");

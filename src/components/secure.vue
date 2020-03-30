@@ -7,57 +7,84 @@
     <button id="bubbles-two" type="button" v-on:click="patientSearch()">Search</button>   
 
   <div v-if="search">
-    <ul>
-      <li> ID: {{patients.id}} </li>
-      <li> Name: {{patients.name}} </li>
-      <li> Phone Number: {{patients.phone_number}} </li>
-      <li> City: {{patients.city}} </li>
-      <li> Symptoms: {{patients.symptoms}} </li>
-      <li> Infected?: {{patients.infected}} </li>
-      <li> Treatment: {{patients.treatment}} </li>
-      <li> Admitted?: {{patients.admitted}} </li>
-      <li> Doctor: {{patients.doctor}} </li>
-    </ul>
+    <div class="table-responsive">
+          <table class="table-hover">
+              <thead>
+                  <tr>
+                      <th>Id</th>
+                      <th>Name</th>
+                      <th>Phone Number</th>
+                      <th>City</th>
+                      <th>Symptoms</th>
+                      <th>Infected</th>
+                      <th>Treatment</th>
+                      <th>Admitted</th>
+                      <th>Doctor</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <td> {{patients.id}} </td>
+                  <td> {{patients.name}} </td>
+                  <td> {{patients.phone_number}} </td>
+                  <td> {{patients.city}} </td>
+                  <td> {{patients.symptoms}} </td>
+                  <td> {{patients.infected}} </td>
+                  <td> {{patients.treatment}} </td>
+                  <td> {{patients.admitted}} </td>
+                  <td> {{patients.doctor}} </td>
+              </tbody>
+          </table>
+    </div>      
   </div>
 
   <div v-else-if="!search"> 
     <!-- {{allPatients}} -->
     <div class="table-responsive">
-            <table class="table-hover">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Name</th>
-                        <th>Phone Number</th>
-                        <th>City</th>
-                        <th>Symptoms</th>
-                        <th>Infected</th>
-                        <th>Treatment</th>
-                        <th>Admitted</th>
-                        <th>Doctor</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="item in allPatients" :key="item.id">
-                        <td>{{ item.id }}</td>
-                        <td>{{ item.name }}</td>
-                        <td>{{ item.phone_number }}</td>
-                        <td>{{ item.city }}</td>
-                        <td>{{ item.symptoms }}</td>
-                        <td>{{ item.infected }}</td>
-                        <td>{{ item.treatment }}</td>
-                        <td>{{ item.admitted }}</td>
-                        <td>{{ item.doctor }}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>      
+      <table class="table-hover">
+          <thead>
+              <tr>
+                  <th>Id</th>
+                  <th>Name</th>
+                  <th>Phone Number</th>
+                  <th>City</th>
+                  <th>Symptoms</th>
+                  <th>Infected</th>
+                  <th>Treatment</th>
+                  <th>Admitted</th>
+                  <th>Doctor</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr v-for="item in allPatients" :key="item.id">
+                  <td>{{ item.id }}</td>
+                  <td>{{ item.name }}</td>
+                  <td>{{ item.phone_number }}</td>
+                  <td>{{ item.city }}</td>
+                  <td>{{ item.symptoms }}</td>
+                  <td>{{ item.infected }}</td>
+                  <td>{{ item.treatment }}</td>
+                  <td>{{ item.admitted }}</td>
+                  <td>{{ item.doctor }}</td>
+              </tr>
+          </tbody>
+      </table>
+    </div>
+  </div>
+
+
+ <!-- THIS NEEDS WORK!!! -->
+    <div v-else-if="search != patients.name">
+        "Sorry, no patient on record found. Please try your search again."
     </div>
 
-    <h1>Add a Patient - {{ search }} </h1>
 
-    <input id="bubbles-three" type="text" v-model="search" placeholder="Patient Name" />
-    <button id="bubbles-four" type="button" v-on:click="addPatient()">Add</button>   
+    <div>
+      <h1>Add a Patient - {{ addPatient }} </h1>
+
+      <input id="bubbles-three" type="text" v-model="addPatient.name" placeholder="Patient Name" />
+      <button id="bubbles-four" type="button" v-on:click="addPatient()">Add</button>   
+    </div>
+
   </div>
 
 
@@ -66,6 +93,8 @@
 
 <script>
 import axios from "axios";
+// import db from "../../models";
+// import app from "../../server";
 // The below is a basic framework for searching for patient data
 
 export default {
@@ -104,6 +133,14 @@ export default {
           this.patients = results;
           // console.log("results: ", results);
           // response.send(results);
+    },
+    addPatient() {
+      // app.post("/api/patient", function(req, res) {
+      // console.log(req.body);
+      // db.Patients.create(req.body).then(function(dbPatients) {
+      //   res.json(dbPatients);
+      // });
+    // });
     }
   },
 
