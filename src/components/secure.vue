@@ -6,53 +6,54 @@
     <input id="bubbles" type="text" v-model="search" placeholder="Patient or Doctor Name" />
     <button id="bubbles-two" type="button" v-on:click="patientSearch()">Search</button>   
 
-  <!-- <div v-for="patient in filteredPatients" :key="patient" class="single-patient">
-      <div>
-        <span>{{patient.id}}</span>
-      </div>
-      
-      <div>
-        <span>{{patient.name}}</span>
-      </div>
-      
-      <div>
-        <span>{{patient.phone_number}}</span>
-      </div>
-  </div> -->
+  <div v-if="search">
+    <ul>
+      <li> ID: {{patients.id}} </li>
+      <li> Name: {{patients.name}} </li>
+      <li> Phone Number: {{patients.phone_number}} </li>
+      <li> City: {{patients.city}} </li>
+      <li> Symptoms: {{patients.symptoms}} </li>
+      <li> Infected?: {{patients.infected}} </li>
+      <li> Treatment: {{patients.treatment}} </li>
+      <li> Admitted?: {{patients.admitted}} </li>
+      <li> Doctor: {{patients.doctor}} </li>
+    </ul>
+  </div>
 
-  <!-- <div> {{patients}} </div> -->
-
-   <!-- <div>
-    <b-table striped hover :patients="patients"></b-table>
-  </div> -->
-
-<div v-if="search">
-
-  <ul>
-    <li> ID: {{patients.id}} </li>
-    <li> Name: {{patients.name}} </li>
-    <li> Phone Number: {{patients.phone_number}} </li>
-    <li> City: {{patients.city}} </li>
-    <li> Symptoms: {{patients.symptoms}} </li>
-    <li> Infected?: {{patients.infected}} </li>
-    <li> Treatment: {{patients.treatment}} </li>
-    <li> Admitted?: {{patients.admitted}} </li>
-    <li> Doctor: {{patients.doctor}} </li>
-  </ul>
-
-</div>
-
-<div v-else-if="!search"> 
-  {{ allPatients }}
-  "Search for the patient above."
-  
-  <!-- display all patient data   -->
-</div>
-
-
-
-
-</div>
+  <div v-else-if="!search"> 
+    <!-- {{allPatients}} -->
+    <div class="table-responsive">
+            <table class="table-hover">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Phone Number</th>
+                        <th>City</th>
+                        <th>Symptoms</th>
+                        <th>Infected</th>
+                        <th>Treatment</th>
+                        <th>Admitted</th>
+                        <th>Doctor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="item in allPatients" :key="item.id">
+                        <td>{{ item.id }}</td>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.phone_number }}</td>
+                        <td>{{ item.city }}</td>
+                        <td>{{ item.symptoms }}</td>
+                        <td>{{ item.infected }}</td>
+                        <td>{{ item.treatment }}</td>
+                        <td>{{ item.admitted }}</td>
+                        <td>{{ item.doctor }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>      
+    </div>
+  </div>
 
 
 
@@ -79,11 +80,10 @@ export default {
       axios.get("http://localhost:8081/api/patients")
       .then(response => {
         this.info = response.data;
-        // const allPatients = this.info;
         this.allPatients = this.info;
-        // console.log("all:", allPatients);
-      // console.log("this: ", this.info);
-    });
+      }).catch(err => {
+        console.log("Error: ", err);
+      });
   },
   methods: {
     patientSearch() {
@@ -107,15 +107,6 @@ export default {
       this.info = data.body.slice(0, 10);
     });
   },
-  
-//   computed: {
-//     filteredPatients: function() {
-//       console.log("heyyyy: ",this);
-//       return this.patients.filter(results => {
-//         return results.name.match(this.search);
-//       });
-//     }
-// },
 };
 
 </script>
@@ -136,5 +127,9 @@ export default {
 
 li {
   list-style-type: none
+}
+
+td, th {
+  padding-left: 15px;
 }
 </style>
