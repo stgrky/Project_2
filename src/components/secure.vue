@@ -1,32 +1,60 @@
 <template>
   <div id="secure">
-    <h1>Patient List - {{ search}} </h1>
+    <h1>Patient List - {{ search }} </h1>
     <h2>Search Your Patient Below</h2>
 
-    <div id="bubbles">
-      <div id="bubbles">
-        <b-dropdown id="dropdown-1" text="Dropdown Button" class="m-md-2">
-          <b-dropdown-item>Search by Doctor Name</b-dropdown-item>
-          <b-dropdown-item>Search by Patient Name</b-dropdown-item>
-        </b-dropdown>
+    <input id="bubbles" type="text" v-model="search" placeholder="Patient or Doctor Name" />
+    <button id="bubbles-two" type="button" v-on:click="patientSearch()">Search</button>   
+
+  <!-- <div v-for="patient in filteredPatients" :key="patient" class="single-patient">
+      <div>
+        <span>{{patient.id}}</span>
       </div>
-
-      <input id="bubbles" type="text" v-model="search" placeholder="Patient or Doctor Name" />
-      <button id="bubbles-two" type="button" v-on:click="patientSearch()">Search</button>
       
-      <!-- <div id="table" v-for="Patients in Patients" :key="Patients.id" class="single-patient">
-        <td>{{ Patients.id }}</td>
-        <td>{{ Patients.name }}</td>
-        <td>{{ Patients.phone_number }}</td>
+      <div>
+        <span>{{patient.name}}</span>
+      </div>
+      
+      <div>
+        <span>{{patient.phone_number}}</span>
+      </div>
+  </div> -->
 
-      </div> -->
-    </div>
+  <!-- <div> {{patients}} </div> -->
 
-    <div>
-      <b-table striped hover :items="items"></b-table>
-      <div id="app">{{ info }}</div>
-    </div>
-  </div>
+   <!-- <div>
+    <b-table striped hover :patients="patients"></b-table>
+  </div> -->
+
+<div v-if="search">
+
+  <ul>
+    <li> ID: {{patients.id}} </li>
+    <li> Name: {{patients.name}} </li>
+    <li> Phone Number: {{patients.phone_number}} </li>
+    <li> City: {{patients.city}} </li>
+    <li> Symptoms: {{patients.symptoms}} </li>
+    <li> Infected?: {{patients.infected}} </li>
+    <li> Treatment: {{patients.treatment}} </li>
+    <li> Admitted?: {{patients.admitted}} </li>
+    <li> Doctor: {{patients.doctor}} </li>
+  </ul>
+
+</div>
+
+<div v-else-if="!search"> 
+  {{ allPatients }}
+  "Search for the patient above."
+  
+  <!-- display all patient data   -->
+</div>
+
+
+
+
+</div>
+
+
 
 </template>
 
@@ -39,9 +67,11 @@ export default {
   data() {
     return {
       patients: [],
+      results: "",
       search: "",
-      items: null,
-      info: null
+      info: null,
+      allPatients: [],
+      searchData: "",
     };
   },
 
@@ -49,24 +79,27 @@ export default {
       axios.get("http://localhost:8081/api/patients")
       .then(response => {
         this.info = response.data;
-      console.log("this: ", this.info);
-  });
+        // const allPatients = this.info;
+        this.allPatients = this.info;
+        // console.log("all:", allPatients);
+      // console.log("this: ", this.info);
+    });
   },
-  
-  patientSearch() {
-    axios.get("http://localhost:8081/api/patients")
-      .then(response => {
-        this.info = response.data;
-        const searchData = this.info;
-        const results = searchData.find(function() {
-          return this.search.toLowerCase();
-        });
-        console.log("results: ",results);
-        //     return results;
-        //   } 
-        // });
-        console.log("this: ", this.info);
-      });
+  methods: {
+    patientSearch() {
+      axios.get("http://localhost:8081/api/patients")
+        .then(response => (
+          console.log("response: ",response),
+          this.info = response.data));
+          const searchData = this.info;
+          console.log("atx:",searchData);
+          const results = searchData.find( (patient) => {
+            return patient.name.toLowerCase() === this.search.toLowerCase();
+          });
+          this.patients = results;
+          // console.log("results: ", results);
+          // response.send(results);
+    }
   },
 
   created() {
@@ -75,22 +108,33 @@ export default {
     });
   },
   
-  computed: {
-    filteredPatients: function() {
-      return this.info.filter(Patients => {
-        return Patients.name.match(this.app);
-      });
-    }
-  }
+//   computed: {
+//     filteredPatients: function() {
+//       console.log("heyyyy: ",this);
+//       return this.patients.filter(results => {
+//         return results.name.match(this.search);
+//       });
+//     }
+// },
 };
+
 </script>
 
 
-<style scoped>
+<style>
 #secure {
   background-color: #ffffff;
   border: 1px solid #cccccc;
   padding: 20px;
   margin-top: 10px;
+}
+
+.single-patient {
+  width: 250px;
+  border: 3px solid black;
+}
+
+li {
+  list-style-type: none
 }
 </style>

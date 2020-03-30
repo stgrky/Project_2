@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    let Patients = sequelize.define("Patients", {
+    let Patient = sequelize.define("Patients", {
       id: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -33,17 +33,17 @@ module.exports = function(sequelize, DataTypes) {
       doctor: DataTypes.STRING,
     });
 
-    Patients.associate = function(models) {
+    Patient.associate = function(models) {
         // a Patient should belong to an Doctor
         // A Patient can't be created without a Doctor due to the foreign key constraint
-        Patients.belongsTo(models.Doctor, {
+        Patient.belongsTo(models.Doctor, {
             foreignKey: {
                 allowNull: false
             }
         });
     };
 
-    return Patients;
+    return Patient;
 };
 
 // foreign key (doctor_id) references doctors(doctor_id)  
