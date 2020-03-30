@@ -96,7 +96,6 @@ import axios from "axios";
 // import db from "../../models";
 // import app from "../../server";
 // The below is a basic framework for searching for patient data
-
 export default {
   name: "Patients",
   data() {
@@ -109,7 +108,6 @@ export default {
       searchData: "",
     };
   },
-
   mounted () {
       axios.get("http://localhost:8081/api/patients")
       .then(response => {
@@ -135,26 +133,24 @@ export default {
           // response.send(results);
     },
     addPatient() {
-      axios.post("http://localhost:8081/api/patient", {
-        name: ,
-        phone_number: ,
-        city: ,
-        symptoms: ,
-        infected: ,
-        treatment: ,
-        admitted: ,
-        doctor: ,
-      })
+      // axios.post("http://localhost:8081/api/patient", {
+      //   name: ,
+      //   phone_number: ,
+      //   city: ,
+      //   symptoms: ,
+      //   infected: ,
+      //   treatment: ,
+      //   admitted: ,
+      //   doctor: ,
+      // })
     }
   },
-
   created() {
     this.$http.get("http://localhost:8081/api/patients").then(function(data) {
       this.info = data.body.slice(0, 10);
     });
   },
 };
-
 </script>
 
 
@@ -165,16 +161,13 @@ export default {
   padding: 20px;
   margin-top: 10px;
 }
-
 .single-patient {
   width: 250px;
   border: 3px solid black;
 }
-
 li {
   list-style-type: none
 }
-
 td, th {
   padding-left: 15px;
 }
