@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import LoginComponent from "../components/login.vue";
 import SecureComponent from "../components/secure.vue";
+import NewPatientComponent from "../components/new_patient";
 
 Vue.use(VueRouter);
 
@@ -22,6 +23,11 @@ export default new VueRouter({
             path: "/secure",
             name: "secure",
             component: SecureComponent
+        },
+        {
+        path: "/new_patient",
+        name: "new_patient",
+        component: NewPatientComponent
         }
     ]
 });

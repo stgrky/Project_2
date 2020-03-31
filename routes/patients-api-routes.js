@@ -19,6 +19,17 @@ module.exports = function(app) {
       res.json(dbPatients);
     });
   });
+
+   // Find all Patients with the name
+   app.get("/api/patients/:name", function(req, res) {
+    db.Patients.findAll({
+      where: {
+        name: req.params.name
+      }
+    }).then(function(dbPatients) {
+      res.json(dbPatients);
+    });
+  });
     
   // Create an patient
   app.post("/api/patient", function(req, res) {
@@ -28,32 +39,36 @@ module.exports = function(app) {
     });
   });
 
-   // updating Patients
-   app.put("/api/patient", function(req, res) {
-    // NOT REQUIRED FOR PROJECT, BUT FIGURED WE'D DO IT ANYWAYS.
-    // CAN ALWAYS REMOVE IF WE WANT!
-    db.Patients.update(req.body,
-      {
-        where: {
-          id: req.body.id
-        }
-      })
-      .then(function(dbPatients) {
-        res.json(dbPatients);
-      });
-  });
+
+  // FUTURE DEVELOPMENT:
+  // ===========================
+  
+  // updating Patients
+  //  app.put("/api/patient", function(req, res) {
+  //   // NOT REQUIRED FOR PROJECT, BUT FIGURED WE'D DO IT ANYWAYS.
+  //   // CAN ALWAYS REMOVE IF WE WANT!
+  //   db.Patients.update(req.body,
+  //     {
+  //       where: {
+  //         id: req.body.id
+  //       }
+  //     })
+  //     .then(function(dbPatients) {
+  //       res.json(dbPatients);
+  //     });
+  // });
     
   // Delete the Doctor with the id
-  app.delete("/api/patient/:id", function(req, res) {
-    // NOT REQUIRED FOR PROJECT, BUT FIGURED WE'D DO IT ANYWAYS.
-    // CAN ALWAYS REMOVE IF WE WANT!
-    db.Patients.destroy({
-      where: {
-        id: req.params.id
-      }
-    }).then(function(dbPatients) {
-      res.json(dbPatients);
-    });
-  });
+  // app.delete("/api/patient/:id", function(req, res) {
+  //   // NOT REQUIRED FOR PROJECT, BUT FIGURED WE'D DO IT ANYWAYS.
+  //   // CAN ALWAYS REMOVE IF WE WANT!
+  //   db.Patients.destroy({
+  //     where: {
+  //       id: req.params.id
+  //     }
+  //   }).then(function(dbPatients) {
+  //     res.json(dbPatients);
+  //   });
+  // });
 
 };

@@ -1,67 +1,86 @@
 <template>
   <div id="secure">
-    <h1>Patient List - {{ search }} </h1>
-    <h2>Search Your Patient Below</h2>
+    <div>
+      <h1>Patient List - {{ search }}</h1>
+      <h2>Search Your Patient Below</h2>
+      <input id="bubbles" type="text" v-model="search" placeholder="Patient Name" />
+      <button id="bubbles-two" type="button" v-on:click="patientSearch()">Search</button>
+      <router-link to="/new_patient">Or Add a New Patient</router-link>
+    </div>
 
-    <input id="bubbles" type="text" v-model="search" placeholder="Patient or Doctor Name" />
-    <button id="bubbles-two" type="button" v-on:click="patientSearch()">Search</button>   
+    <!-- If Search Returns Results, Run This Table -->
+    <div v-if="search">
+      <div class="table-responsive">
+            <table class="table-hover">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Phone Number</th>
+                        <th>City</th>
+                        <th>Symptoms</th>
+                        <th>Infected</th>
+                        <th>Treatment</th>
+                        <th>Admitted</th>
+                        <th>Doctor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <td> {{patients.id}} </td>
+                    <td> {{patients.name}} </td>
+                    <td> {{patients.phone_number}} </td>
+                    <td> {{patients.city}} </td>
+                    <td> {{patients.symptoms}} </td>
+                    <td> {{patients.infected}} </td>
+                    <td> {{patients.treatment}} </td>
+                    <td> {{patients.admitted}} </td>
+                    <td> {{patients.doctor}} </td>
+                </tbody>
+            </table>
+      </div>      
+    </div>
 
-  <!-- <div v-for="patient in filteredPatients" :key="patient" class="single-patient">
-      <div>
-        <span>{{patient.id}}</span>
+    <div v-else-if="!search">
+      <!-- If Search Does Not Return Results, Show All Patients -->
+      <div class="table-responsive">
+        <table class="table-hover">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Name</th>
+              <th>Phone Number</th>
+              <th>City</th>
+              <th>Symptoms</th>
+              <th>Infected</th>
+              <th>Treatment</th>
+              <th>Admitted</th>
+              <th>Doctor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="item in allPatients" :key="item.id">
+              <td>{{ item.id }}</td>
+              <td>{{ item.name }}</td>
+              <td>{{ item.phone_number }}</td>
+              <td>{{ item.city }}</td>
+              <td>{{ item.symptoms }}</td>
+              <td>{{ item.infected }}</td>
+              <td>{{ item.treatment }}</td>
+              <td>{{ item.admitted }}</td>
+              <td>{{ item.doctor }}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      
-      <div>
-        <span>{{patient.name}}</span>
-      </div>
-      
-      <div>
-        <span>{{patient.phone_number}}</span>
-      </div>
-  </div> -->
-
-  <!-- <div> {{patients}} </div> -->
-
-   <!-- <div>
-    <b-table striped hover :patients="patients"></b-table>
-  </div> -->
-
-<div v-if="search">
-
-  <ul>
-    <li> ID: {{patients.id}} </li>
-    <li> Name: {{patients.name}} </li>
-    <li> Phone Number: {{patients.phone_number}} </li>
-    <li> City: {{patients.city}} </li>
-    <li> Symptoms: {{patients.symptoms}} </li>
-    <li> Infected?: {{patients.infected}} </li>
-    <li> Treatment: {{patients.treatment}} </li>
-    <li> Admitted?: {{patients.admitted}} </li>
-    <li> Doctor: {{patients.doctor}} </li>
-  </ul>
-
-</div>
-
-<div v-else-if="!search"> 
-  {{ allPatients }}
-  "Search for the patient above."
-  
-  <!-- display all patient data   -->
-</div>
-
-
-
-
-</div>
-
-
-
+    </div>
+  </div>
 </template>
 
 <script>
 import axios from "axios";
 // The below is a basic framework for searching for patient data
 
+//
 export default {
   name: "Patients",
   data() {
@@ -71,53 +90,39 @@ export default {
       search: "",
       info: null,
       allPatients: [],
-      searchData: "",
+      searchData: ""
     };
   },
 
-  mounted () {
-      axios.get("http://localhost:8081/api/patients")
+  mounted() {
+    axios
+      .get("http://localhost:8081/api/patients")
       .then(response => {
         this.info = response.data;
-        // const allPatients = this.info;
         this.allPatients = this.info;
-        // console.log("all:", allPatients);
-      // console.log("this: ", this.info);
-    });
+      })
+      .catch(err => {
+        console.log("Error: ", err);
+      });
   },
   methods: {
     patientSearch() {
-      axios.get("http://localhost:8081/api/patients")
-        .then(response => (
-          console.log("response: ",response),
-          this.info = response.data));
-          const searchData = this.info;
-          console.log("atx:",searchData);
-          const results = searchData.find( (patient) => {
-            return patient.name.toLowerCase() === this.search.toLowerCase();
-          });
-          this.patients = results;
-          // console.log("results: ", results);
-          // response.send(results);
+      axios
+        .get("http://localhost:8081/api/patients")
+        .then(
+          response => (
+            console.log("response: ", response), (this.info = response.data)
+          )
+        );
+      const searchData = this.info;
+      console.log("atx:", searchData);
+      const results = searchData.find(patient => {
+        return patient.name.toLowerCase() === this.search.toLowerCase();
+      });
+      this.patients = results;
     }
-  },
-
-  created() {
-    this.$http.get("http://localhost:8081/api/patients").then(function(data) {
-      this.info = data.body.slice(0, 10);
-    });
-  },
-  
-//   computed: {
-//     filteredPatients: function() {
-//       console.log("heyyyy: ",this);
-//       return this.patients.filter(results => {
-//         return results.name.match(this.search);
-//       });
-//     }
-// },
+  }
 };
-
 </script>
 
 
@@ -128,13 +133,16 @@ export default {
   padding: 20px;
   margin-top: 10px;
 }
-
 .single-patient {
   width: 250px;
   border: 3px solid black;
 }
-
 li {
-  list-style-type: none
+  list-style-type: none;
+}
+
+td,
+th {
+  padding-left: 15px;
 }
 </style>
