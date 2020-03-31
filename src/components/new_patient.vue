@@ -101,8 +101,7 @@ export default {
         doctor: this.doctor
       };
       console.log(newPatient);
-      axios
-        .post("/api/patients", newPatient)
+      axios.post("/api/patients", newPatient)
         //  { // THIS IS NOT WORKING!!!! GETTING ERROR FOR THIS ROUTE
         // //console logged all below and Correctly working
         // }, console.log(this.name))
