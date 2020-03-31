@@ -53,6 +53,7 @@
             </table>
         </div>      
     </div>
+    <!-- Adding New Patient
     <h1>Add a Patient - {{ addPatient.name }} </h1>
     <input id="bubbles-three" type="text" v-model="addPatient.name" placeholder="Patient Name" />
     <input id="bubbles-three" type="text" v-model="addPatient.Id" placeholder="ID" />
@@ -72,6 +73,7 @@
     </div>
     <input id="bubbles-three" type="text" v-model="addPatient.doctorLastName" placeholder="Doctor Last Name" />
     <button id="bubbles-four" type="button" v-on:click="addPatient()">Add</button> 
+     -->
   </div>
 
 
@@ -82,6 +84,7 @@
 import axios from "axios";
 // The below is a basic framework for searching for patient data
 
+// 
 export default {
   name: "Patients",
   data() {
