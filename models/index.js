@@ -4,7 +4,7 @@
 
 const fs = require("fs"); // node.js way of reading thru the file system
 const path = require("path");// dealing with absolute and relative pathways
-const Sequelize = require("sequelize"); // need to create sequelize object and connect to database
+var Sequelize = require("sequelize"); // need to create sequelize object and connect to database
 var basename = path.basename(module.filename);
 var env = process.env.NODE_ENV || "development";
 const config = require(__dirname + "/../config/config.json")[env];
