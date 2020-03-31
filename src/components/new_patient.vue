@@ -1,57 +1,59 @@
 <template>
-  <!-- Adding New Patient -->
+  <!-- Add New Patient Form -->
   <div class="container">
     <div class="row justify-center-content">
       <div class="col-md=8">
         <div class="card">
-          <div class="card-header">Add a Patient - {{ addPatient.name }}</div>
+          <div class="card-header">New Patient<strong> : {{ name }}</strong></div>
 
           <div class="card-body">
             <form @submit="addPatient">
-              <input id="bubbles-three" type="text" v-model="name" placeholder="Patient Name" />
               <input
-                id="bubbles-three"
                 type="text"
+                class="form-control bubbles-three"
+                v-model="name"
+                placeholder="Patient Name"
+              />
+              <input
+                type="text"
+                class="form-control bubbles-three"
                 v-model="phone_number"
                 placeholder="Phone Number"
               />
-              <input type="text" class="form-control" v-model="city" placeholder="City" />
-              <input type="text" class="form-control" v-model="symptoms" placeholder="Symptoms" />
-              <div class="form-questions">
-                <input
-                  type="radio"
-                  class="form-control"
-                  id="yes"
-                  value="Yes"
-                  v-model="infectedQuestion"
-                />
-                <label for="yes">Yes</label>
-                <input
-                  type="radio"
-                  class="form-control"
-                  id="no"
-                  value="No"
-                  v-model="infectedQuestion"
-                />
-                <label for="no">No</label>
+              <input
+                type="text"
+                class="form-control bubbles-three"
+                v-model="city"
+                placeholder="City"
+              />
+              <input
+                type="text"
+                class="form-control bubbles-three"
+                v-model="symptoms"
+                placeholder="Symptoms"
+              />
+              <div class="infected-box">
+                <b-form-group label="Infected?">
+                  <b-form-radio class="form-control" v-model="infectedQuestion" name="some-radios" value="Yes">Yes</b-form-radio>
+                  <b-form-radio class="form-control" v-model="infectedQuestion" name="some-radios" value="No">No</b-form-radio>
+                </b-form-group>
+
+                <div class="mt-3">
+                  Selected:
+                  <strong>{{ infectedQuestion }}</strong>
+                </div>
               </div>
-              <input id="bubbles-three" type="text" v-model="treatment" placeholder="Treatment" />
+              <input class="form-control" type="text" v-model="treatment" placeholder="Treatment" />
               <div class="form-questions">
-                <label for="admittedQuestion">Admitted?</label>
-                <input
-                  type="radio"
-                  class="form-control"
-                  id="yes"
-                  value="Yes"
-                  v-model="admittedQuestion"
-                /> Yes
-                <input
-                  type="radio"
-                  class="form-control"
-                  id="no"
-                  value="No"
-                  v-model="admittedQuestion"
-                /> No
+                <b-form-group label="Admitted to Hospital?">
+                  <b-form-radio class="form-control" v-model="admittedQuestion" name="admitted-radio" value="Yes">Yes</b-form-radio>
+                  <b-form-radio class="form-control" v-model="admittedQuestion" name="admitted-radio" value="No">No</b-form-radio>
+                </b-form-group>
+
+                <div class="mt-3">
+                  Selected:
+                  <strong>{{ admittedQuestion }}</strong>
+                </div>
               </div>
               <input
                 type="text"
@@ -60,10 +62,8 @@
                 v-model="doctor"
                 placeholder="Doctor Name"
               />
-              <button class="btn bubbles-four">Add</button>
+              <button class="btn btn-success">Submit New Patient</button>
             </form>
-            <strong>Preview:</strong>
-            <pre>{{output}}</pre>
           </div>
         </div>
       </div>
@@ -75,7 +75,6 @@
 // Mounting Data
 export default {
   mounted() {
-    console.log("Mount Success!");
   },
 
   data() {
@@ -91,6 +90,7 @@ export default {
     };
   },
 
+// Post New Patient Data Back to DB
   methods: {
     addPatient(e) {
       e.preventDefault();
@@ -124,6 +124,14 @@ export default {
   padding: 20px;
   margin-top: 10px;
 }
+.bubbles-three {
+  margin: 10px;
+  padding: 5px;
+  border-radius: 20px;
+  margin: 10px;
+  width: 100px;
+  outline: none;
+}
 
 .single-patient {
   width: 250px;
@@ -137,5 +145,9 @@ li {
 td,
 th {
   padding-left: 15px;
+}
+
+.btn {
+    color: black;
 }
 </style>
