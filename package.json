@@ -6,7 +6,9 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "start": "npm run build && node server.js"
+    "local": "npm run build && node server.js",
+    "start": "node server.js",
+    "heroku-postbuild": "vue-cli-service build"
   },
   "dependencies": {
     "@vue/cli": "^4.2.3",
