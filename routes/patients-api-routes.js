@@ -20,9 +20,9 @@ module.exports = function(app) {
     });
   });
 
-   // Find one Patient with the name
-   app.get("/api/patient/:name", function(req, res) {
-    db.Patients.findOne({
+   // Find all Patients with the name
+   app.get("/api/patients/:name", function(req, res) {
+    db.Patients.findAll({
       where: {
         name: req.params.name
       }
@@ -39,7 +39,11 @@ module.exports = function(app) {
     });
   });
 
-   // updating Patients
+
+  // FUTURE DEVELOPMENT:
+  // ===========================
+  
+  // updating Patients
   //  app.put("/api/patient", function(req, res) {
   //   // NOT REQUIRED FOR PROJECT, BUT FIGURED WE'D DO IT ANYWAYS.
   //   // CAN ALWAYS REMOVE IF WE WANT!
