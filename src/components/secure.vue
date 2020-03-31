@@ -3,10 +3,12 @@
     <div>
       <h1>Patient List - {{ search }}</h1>
       <h2>Search Your Patient Below</h2>
-      <input id="bubbles" type="text" v-model="search" placeholder="Patient Name" />
-      <button id="bubbles-two" type="button" v-on:click="patientSearch()">Search</button>
+      <input id="bubbles" type="text" v-model="search" 
+       placeholder="Patient Name" />
+      <!-- <button id="bubbles-two" type="button" v-on:click="patientSearch()">Search</button> -->
       <router-link to="/new_patient">Or Add a New Patient</router-link>
     </div>
+<<<<<<< HEAD
 
     <!-- If Search Returns Results, Run This Table -->
     <div v-if="search">
@@ -39,26 +41,15 @@
             </table>
       </div>      
     </div>
+=======
+>>>>>>> e15ece65dec63b05dd87030479ad06fd1495c934
 
-    <div v-else-if="!search">
+    <div v-if="!flag">
       <!-- If Search Does Not Return Results, Show All Patients -->
       <div class="table-responsive">
         <table class="table-hover">
-          <thead>
-            <tr>
-              <th>Id</th>
-              <th>Name</th>
-              <th>Phone Number</th>
-              <th>City</th>
-              <th>Symptoms</th>
-              <th>Infected</th>
-              <th>Treatment</th>
-              <th>Admitted</th>
-              <th>Doctor</th>
-            </tr>
-          </thead>
           <tbody>
-            <tr v-for="item in allPatients" :key="item.id">
+            <tr v-for="item in filteredPatients" :key="item.id">
               <td>{{ item.id }}</td>
               <td>{{ item.name }}</td>
               <td>{{ item.phone_number }}</td>
@@ -90,8 +81,21 @@ export default {
       search: "",
       info: null,
       allPatients: [],
-      searchData: ""
+      searchData: "",
+      flag:false
     };
+  },
+  computed: {
+  filteredPatients: function(){
+    let filtered= this.allPatients.filter(value=>{
+      return value.name.match(new RegExp(this.search,"i"));//?case insensative, happen anywhere
+    });
+    return filtered.sort((a,b)=>{
+     return a.name-b.name;
+      });
+  }
+
+
   },
 
   mounted() {
@@ -105,7 +109,7 @@ export default {
         console.log("Error: ", err);
       });
   },
-  methods: {
+  
     patientSearch() {
       axios
         .get("http://localhost:8081/api/patients")
@@ -116,13 +120,14 @@ export default {
         );
       const searchData = this.info;
       console.log("atx:", searchData);
-      const results = searchData.find(patient => {
+      const results = searchData.filter(patient => {
         return patient.name.toLowerCase() === this.search.toLowerCase();
       });
       this.patients = results;
+      this.flag=true;
     }
-  }
-};
+  };
+
 </script>
 
 
