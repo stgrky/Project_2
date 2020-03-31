@@ -19,7 +19,7 @@ app.use(express.json());
 let db = require("./models");
 
 // Static directory
-app.use(express.static("dist"));
+app.use(express.static(__dirname + "/dist"));
 
 // Routes
 // =============================================================
