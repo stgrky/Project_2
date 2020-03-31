@@ -45,10 +45,24 @@
       <!-- If Search Does Not Return Results, Show All Patients -->
       <div class="table-responsive">
         <table class="table-hover">
+          <thead>
+            <tr>
+              <td> </td>
+              <th>Id</th>
+              <th>Name</th>
+              <th>Phone Number</th>
+              <th>City</th>
+              <th>Symptoms</th>
+              <th>Infected</th>
+              <th>Treatment</th>
+              <th>Admitted</th>
+              <th>Doctor</th>
+            </tr>
+          </thead>
           <tbody>
             <tr v-for="item in filteredPatients" :key="item.id">
               <td>
-                <button class="btn btn-success" id="deleteBtn" v-bind="item.id">Delete Patient</button>
+                <button v-on:click="deletePatient" v-bind:id="item.id" class="btn btn-success" >Delete Patient</button>
               </td>
 
               <td>{{ item.id }}</td>
@@ -82,7 +96,7 @@ export default {
       info: null,
       allPatients: [],
       searchData: "",
-      flag:false
+      flag:false,
     };
   },
   computed: {
@@ -123,12 +137,27 @@ export default {
       this.patients = results;
       this.flag=true;
     },
+  methods: {
+    deletePatient() {
+      // event.preventDefault();
+      // console.log("this: ",this);
+      console.log("this.Patients: ", this.filteredPatients);
+      let deletedPatient = this.filteredPatients.id;
+      console.log(deletedPatient);
 
-    // deletePatient() {
-    //   axios.get("/api/patient/:id")
-    //   .then ()
-    // }
-  };
+      // eslint-disable-next-line no-undef
+      axios.post("http://localhost:8081/api/patient/:id", newPatient)
+      .then(response => {
+        console.log("response: ", response);
+      })
+        //  { // THIS IS NOT WORKING!!!! GETTING ERROR FOR THIS ROUTE
+    
+      .catch(function(error) {
+        console.log("error: ", error);
+      });
+    }
+  }
+};
 </script>
 
 
