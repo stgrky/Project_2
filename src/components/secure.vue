@@ -3,12 +3,13 @@
     <div>
       <h1>Patient List - {{ search }}</h1>
       <h2>Search Your Patient Below</h2>
-      <input id="bubbles" type="text" v-model="search" placeholder="Patient Name" />
+      <input id="bubbles" type="text" v-model="search" 
+       placeholder="Patient Name" />
       <button id="bubbles-two" type="button" v-on:click="patientSearch()">Search</button>
       <router-link to="/new_patient">Or Add a New Patient</router-link>
     </div>
     <!-- If Search Returns Results, Run This Table -->
-    <div v-if="search">
+    <div v-if="flag">
       <ul>
         <li>ID: {{patients.id}}</li>
         <li>Name: {{patients.name}}</li>
@@ -22,7 +23,7 @@
       </ul>
     </div>
 
-    <div v-else-if="!search">
+    <div v-else-if="!flag">
       <!-- If Search Does Not Return Results, Show All Patients -->
       <div class="table-responsive">
         <table class="table-hover">
@@ -40,7 +41,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="item in allPatients" :key="item.id">
+            <tr v-for="item in filteredPatients" :key="item.id">
               <td>{{ item.id }}</td>
               <td>{{ item.name }}</td>
               <td>{{ item.phone_number }}</td>
@@ -72,8 +73,19 @@ export default {
       search: "",
       info: null,
       allPatients: [],
-      searchData: ""
+      searchData: "",
+      flag:false
     };
+  },
+  computed: {
+  filteredPatients: function(){
+    let filtered= this.allPatients.filter(value=>{
+      return value.name.match(new RegExp(this.search,"i"));//?case insensative, happen anywhere
+    });
+    return filtered;
+  }
+
+
   },
 
   mounted() {
@@ -88,6 +100,9 @@ export default {
       });
   },
   methods: {
+    nicksMethods(){
+      console.log(this.search);
+    },
     patientSearch() {
       axios
         .get("http://localhost:8081/api/patients")
@@ -98,10 +113,11 @@ export default {
         );
       const searchData = this.info;
       console.log("atx:", searchData);
-      const results = searchData.find(patient => {
+      const results = searchData.filter(patient => {
         return patient.name.toLowerCase() === this.search.toLowerCase();
       });
       this.patients = results;
+      this.flag=true;
     }
   }
 };
