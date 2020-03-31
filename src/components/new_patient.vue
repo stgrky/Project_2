@@ -30,30 +30,21 @@
       <input type="radio" id="no" value="No" v-model="admittedQuestion" /> No
     </div>
         <input id="bubbles-three" type="text" v-model="doctor" placeholder="Doctor Name" />
-    <button class="btn bubbles-four" type="button" v-on:click="addPatient()">Add</button>
+    <button class="btn bubbles-four">Add</button>
     </form>
-    <pre>
-        {{output}}
+    
     </div>
   </div>
+
 </template>
 
 <script>
-import axios from "axios";
-// The below is a basic framework for searching for patient data
-
-// 
+// Mounting Data
 export default {
     mounted () {
-      axios.get("http://localhost:8081/api/patients")
-      .then(response => {
-        this.info = response.data;
-        this.allPatients = this.info;
-      }).catch(err => {
-        console.log("Error: ", err);
-      });
-  },
-  
+    console.log("Mount Success!")
+    },
+
     data() {
         return {
             name: "",
@@ -65,8 +56,8 @@ export default {
           admittedQuestion: "",
           doctor: "",
           };
-  },
-
+    },
+    
   methods: {
     addPatient(e) {
         e.preventDefault();
@@ -84,8 +75,8 @@ export default {
           // console.log("results: ", results);
           // response.send(results);
     }
-}
-};
+
+
 
 
     var patientString = new addPatient({
@@ -108,11 +99,9 @@ export default {
     axios.get("http://localhost:8081/api/patients").then(function(data) {
       this.info = data.body.slice(0, 10);
     });
-  },
-};
-
+  }
+      }
 </script>
-
 
 <style>
 #secure {
@@ -128,11 +117,10 @@ export default {
 }
 
 li {
-  list-style-type: none;
+  list-style-type: none
 }
 
-td,
-th {
+td, th {
   padding-left: 15px;
 }
-</style>
+
