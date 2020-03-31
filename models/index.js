@@ -1,3 +1,5 @@
+/* eslint-disable no-redeclare */
+/* eslint-disable no-undef */
 "use strict";
 
 const fs = require("fs"); // node.js way of reading thru the file system

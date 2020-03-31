@@ -4,9 +4,9 @@
     <div class="row justify-center-content">
       <div class="col-md=8">
         <div class="card">
-          <div class="card-header">Add a Patient - {{ addPatient.name }}</div>
+          <div class="card-header">Add a Patient - {{ name }}</div>
 
-          <div class="card-body">
+          <div class="card-body" id="myapp">
             <form @submit="addPatient">
               <input id="bubbles-three" type="text" v-model="name" placeholder="Patient Name" />
               <input id="bubbles-three" type="text" v-model="phone_number" placeholder="Phone Number">
@@ -24,28 +24,39 @@
                 <label for="no">No</label>
                 <br>
               </div>
+              <br>
               <input class="form-control" id="bubbles-three" type="text" v-model="treatment" placeholder="Treatment" />
+              
               <div class="form-questions">
                 <br>
                 <span>Admitted?: {{ admittedQuestion }} </span>
                 <br>
-                <input type="radio" id="yes" value="Yes" v-model="admittedQuestion">
-                <label for="yes">Yes</label>
+                <input type="radio" id="yes2" value="Yes" v-model="admittedQuestion">
+                <label for="yes2">Yes</label>
                 <br>
-                <input type="radio" id="no" value="No" v-model="admittedQuestion">
-                <label for="no">No</label>
+                <input type="radio" id="no2" value="No" v-model="admittedQuestion">
+                <label for="no2">No</label>
+                <br>
               </div>
+              <br>
               <input type="text" class="form-control" id="bubbles-three" v-model="doctor" placeholder="Doctor Name">
+              <br>
               <button class="btn" id="bubbles-four">Add</button>
             </form>
+            <br>
             <strong>New Patient Preview:</strong>
-            <pre>{{name}}</pre>
-            <pre>{{phone_number}}</pre>
-            <pre>{{city}}</pre>
-            <pre>{{symptoms}}</pre>
-            <pre>{{infectedQuestion}}</pre>
-            <pre>{{admittedQuestion}}</pre>
-            <pre>{{doctor}}</pre>
+            <!-- <pre>{{addPatient}}</pre> 
+            function () { [native code] } -->
+
+            <pre>Name: {{name}}</pre>
+            <pre>Phone Number: {{phone_number}}</pre>
+            <pre>City: {{city}}</pre>
+            <pre>Symptoms: {{symptoms}}</pre>
+            <pre>Infected?: {{infectedQuestion}}</pre>
+            <pre>Admitted?: {{admittedQuestion}}</pre>
+            <pre>Doctor Name: {{doctor}}</pre>
+        
+          <!-- {{ output }} nothing shows for this  -->
 
           </div>
         </div>
@@ -55,6 +66,46 @@
 </template>
 
 <script>
+// eslint-disable-next-line no-unused-vars
+import axios from "axios";
+
+// import app from "../../server";
+// import Vue from "vue";
+// var db = require("../models");
+
+// app = new Vue({
+//   el: "#myapp",
+//   data: {
+//     name: "",
+//     phone_number: "",
+//     city: "",
+//     symptoms: "",
+//     infectedQuestion: "",
+//     treatment: "",
+//     admittedQuestion: "",
+//     doctor: ""
+//   },
+//   methods: {
+//     addPatient: function() {
+//       axios.post("/api/patients", {
+//         name: this.name,
+//         phone_number: this.phone_number,
+//         city: this.city,
+//         symptoms: this.symptoms,
+//         infectedQuestion: this.infectedQuestion,
+//         treatment: this.treatment,
+//         admittedQuestion: this.admittedQuestion, 
+//         doctor: this.doctor
+//       }).then(function (response) {
+//         alert(response.data);
+//       }).catch(function (err) {
+//         console.log(err);
+//       });
+//     }
+//   }
+// });
+
+
 // Mounting Data
 export default {
   mounted() {
@@ -75,28 +126,28 @@ export default {
   },
 
   methods: {
-    addPatient(e) {
-      e.preventDefault();
-      let currentObj = this;
-      this.axios
-        .post("http://localhost:8081/api/patients", {
+    addPatient() {
+      axios
+        .post("/api/patients", { // THIS IS NOT WORKING!!!! GETTING ERROR FOR THIS ROUTE
+        //console logged all below and Correctly working
           name: this.name,
           phone_number: this.phone_number,
           city: this.city,
           symptoms: this.symptoms,
           infectedQuestion: this.infectedQuestion,
           treatment: this.treatment,
-          admittedQuestion: this.admittedQuestion,
+          admittedQuestion: this.admittedQuestion, 
           doctor: this.doctor
-        }, console.log(this))
+        }, console.log(this.name))
         .then(function(response) {
           console.log("a: ",response);
           console.log("b: ",response.data);
-          currentObj.output = response.data;
-          console.log("c: ",currentObj.output);
+          let output = response.data;
+          console.log("c: ", output);
         })
         .catch(function(error) {
-          currentObj.output = error;
+          let output = error;
+          console.log(output);
         });
     }
   }
@@ -107,16 +158,5 @@ export default {
 #yes, #no {
   width: 15px;
 }
-/* #secure {
-  background-color: #ffffff;
-  border: 1px solid #cccccc;
-  padding: 20px;
-  margin-top: 10px;
-} */
-
-/* .single-patient {
-  width: 250px;
-  border: 3px solid black;
-} */
 
 </style>
