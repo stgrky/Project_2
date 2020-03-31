@@ -18,21 +18,22 @@
               <input type="text" class="form-control" v-model="city" placeholder="City" />
               <input type="text" class="form-control" v-model="symptoms" placeholder="Symptoms" />
               <div class="form-questions">
-                <label for="admittedQuestion">Infected?</label>
                 <input
                   type="radio"
                   class="form-control"
                   id="yes"
                   value="Yes"
                   v-model="infectedQuestion"
-                /> Yes
+                />
+                <label for="yes">Yes</label>
                 <input
                   type="radio"
                   class="form-control"
                   id="no"
                   value="No"
                   v-model="infectedQuestion"
-                /> No
+                />
+                <label for="no">No</label>
               </div>
               <input id="bubbles-three" type="text" v-model="treatment" placeholder="Treatment" />
               <div class="form-questions">
@@ -62,6 +63,7 @@
               <button class="btn bubbles-four">Add</button>
             </form>
             <strong>Preview:</strong>
+            <pre>{{output}}</pre>
           </div>
         </div>
       </div>
