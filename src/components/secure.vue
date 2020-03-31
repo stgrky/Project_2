@@ -119,14 +119,31 @@ export default {
           // console.log("results: ", results);
           // response.send(results);
     }
-  },
+  };
 
-  created() {
-    this.$http.get("http://localhost:8081/api/patients").then(function(data) {
-      this.info = data.body.slice(0, 10);
-    });
-  },
-};
+
+    var patientString = new addPatient({
+      data: function(){
+      return {
+        addPatient: {
+          name: "",
+          phone_number: "",
+          city: "",
+          symptoms: "",
+          infectedQuestion: "",
+          treatment: "",
+          admitted: "",
+          doctor: "",
+          }
+//           .then(
+//           console.log(addPatient),
+//           axios.post("http://localhost:8081/api/patient"))
+//   created() {
+//     this.$http.get("http://localhost:8081/api/patients").then(function(data) {
+//       this.info = data.body.slice(0, 10);
+//     });
+//   },
+// };
 
 </script>
 
