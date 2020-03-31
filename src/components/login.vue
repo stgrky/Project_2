@@ -1,7 +1,7 @@
 <template id = "body">
   <div id="login">
-    <h2>C19 Health Portal</h2>
-    <img src=""
+      <img class="logo" src="../assets/c19-logo.jpg" alt="c19 logo">
+    
     <input id="bubbles" type="text" name="username" v-model="input.username" placeholder="Username" />
     <input
       id="bubbles"
@@ -11,6 +11,8 @@
       placeholder="Password"
     />
     <button id="bubbles-two" type="button" v-on:click="login()">Login</button>
+
+    <h6>A COVID-19 PATIENT DATABASE</h6> 
   </div>
 </template>
 
@@ -52,9 +54,11 @@ body {
   background-repeat: no-repeat;
 }
 
-h2 {
-  color: #bf9000;
-  text-align: center;
+.logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
 }
 
 #login {
