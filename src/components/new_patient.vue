@@ -1,63 +1,69 @@
 <template>
-  <!-- Adding New Patient -->
+  <!-- Add New Patient Form -->
   <div class="container">
     <div class="row justify-center-content">
       <div class="col-md=8">
         <div class="card">
-          <div class="card-header">Add a Patient - {{ name }}</div>
+          <div class="card-header">New Patient<strong> : {{ name }}</strong></div>
 
           <div class="card-body" id="myapp">
             <form @submit="addPatient">
-              <input id="bubbles-three" type="text" v-model="name" placeholder="Patient Name" />
-              <input id="bubbles-three" type="text" v-model="phone_number" placeholder="Phone Number">
-              <input type="text" class="form-control" v-model="city" placeholder="City" />
-              <input type="text" class="form-control" v-model="symptoms" placeholder="Symptoms" />
-              
-              <div class="form-questions">
-                <br>
-                <span>Infected?: {{ infectedQuestion }} </span>
-                <br>
-                <input type="radio" id="yes" value="Yes" v-model="infectedQuestion">
-                <label for="yes">Yes</label>
-                <br>
-                <input type="radio" id="no" value="No" v-model="infectedQuestion">
-                <label for="no">No</label>
-                <br>
+              <input
+                type="text"
+                class="form-control bubbles-three"
+                v-model="name"
+                placeholder="Patient Name"
+              />
+              <input
+                type="text"
+                class="form-control bubbles-three"
+                v-model="phone_number"
+                placeholder="Phone Number"
+              />
+              <input
+                type="text"
+                class="form-control bubbles-three"
+                v-model="city"
+                placeholder="City"
+              />
+              <input
+                type="text"
+                class="form-control bubbles-three"
+                v-model="symptoms"
+                placeholder="Symptoms"
+              />
+              <div class="infected-box">
+                <b-form-group label="Infected?">
+                  <b-form-radio class="form-control" v-model="infected" name="some-radios" value="true">Yes</b-form-radio>
+                  <b-form-radio class="form-control" v-model="infected" name="some-radios" value="false">No</b-form-radio>
+                </b-form-group>
+
+                <div class="mt-3">
+                  Selected:
+                  <strong>{{ infected }}</strong>
+                </div>
               </div>
-              <br>
-              <input class="form-control" id="bubbles-three" type="text" v-model="treatment" placeholder="Treatment" />
-              
+              <input class="form-control" type="text" v-model="treatment" placeholder="Treatment" />
               <div class="form-questions">
-                <br>
-                <span>Admitted?: {{ admittedQuestion }} </span>
-                <br>
-                <input type="radio" id="yes2" value="Yes" v-model="admittedQuestion">
-                <label for="yes2">Yes</label>
-                <br>
-                <input type="radio" id="no2" value="No" v-model="admittedQuestion">
-                <label for="no2">No</label>
-                <br>
+                <b-form-group label="Admitted to Hospital?">
+                  <b-form-radio class="form-control" v-model="admitted" name="admitted-radio" value="true">Yes</b-form-radio>
+                  <b-form-radio class="form-control" v-model="admitted" name="admitted-radio" value="false">No</b-form-radio>
+                </b-form-group>
+
+                <div class="mt-3">
+                  Selected:
+                  <strong>{{ admitted }}</strong>
+                </div>
               </div>
-              <br>
-              <input type="text" class="form-control" id="bubbles-three" v-model="doctor" placeholder="Doctor Name">
-              <br>
-              <button class="btn" id="bubbles-four">Add</button>
+              <input
+                type="text"
+                class="form-control"
+                id="bubbles-three"
+                v-model="doctor"
+                placeholder="Doctor Name"
+              />
+              <button class="btn btn-success">Submit New Patient</button>
             </form>
-            <br>
-            <strong>New Patient Preview:</strong>
-            <!-- <pre>{{addPatient}}</pre> 
-            function () { [native code] } -->
-
-            <pre>Name: {{name}}</pre>
-            <pre>Phone Number: {{phone_number}}</pre>
-            <pre>City: {{city}}</pre>
-            <pre>Symptoms: {{symptoms}}</pre>
-            <pre>Infected?: {{infectedQuestion}}</pre>
-            <pre>Admitted?: {{admittedQuestion}}</pre>
-            <pre>Doctor Name: {{doctor}}</pre>
-        
-          <!-- {{ output }} nothing shows for this  -->
-
           </div>
         </div>
       </div>
@@ -66,13 +72,11 @@
 </template>
 
 <script>
-// import db from "../../models";
 import axios from "axios";
 
 // Mounting Data
 export default {
   mounted() {
-    console.log("Mount Success!");
   },
 
   data() {
@@ -81,30 +85,31 @@ export default {
       phone_number: "",
       city: "",
       symptoms: "",
-      infectedQuestion: "",
+      infected: "",
       treatment: "",
-      admittedQuestion: "",
+      admitted: "",
       doctor: ""
     };
   },
 
+// Post New Patient Data Back to DB
   methods: {
     addPatient(event) {
       event.preventDefault();
       let newPatient = {
         name: this.name,
-        phone_number: this.phone_number,
+        phone_number: parseInt(this.phone_number),
         city: this.city,
         symptoms: this.symptoms,
-        infectedQuestion: this.infectedQuestion,
+        infected: this.infected,
         treatment: this.treatment,
-        admittedQuestion: this.admittedQuestion, 
+        admitted: this.admitted, 
         doctor: this.doctor
       };
       console.log(newPatient);
 
       // eslint-disable-next-line no-undef
-      axios.post(process.env.JAWSDB_URL, newPatient)
+      axios.post("http://localhost:8081/api/patient", newPatient)
       .then(response => {
         console.log("response: ", response);
       })
@@ -123,4 +128,16 @@ export default {
   width: 15px;
 }
 
+.bubbles-three {
+  margin: 10px;
+  padding: 5px;
+  border-radius: 20px;
+  margin: 10px;
+  width: 100px;
+  outline: none;
+}
+
+.btn {
+    color: black;
+}
 </style>

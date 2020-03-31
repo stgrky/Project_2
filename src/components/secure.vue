@@ -3,8 +3,9 @@
     <div>
       <h1>Patient List - {{ search }}</h1>
       <h2>Search Your Patient Below</h2>
-      <input id="bubbles" type="text" v-model="search" placeholder="Patient Name" />
-      <button id="bubbles-two" type="button" v-on:click="patientSearch()">Search</button>
+      <input id="bubbles" type="text" v-model="search" 
+       placeholder="Patient Name" />
+      <!-- <button id="bubbles-two" type="button" v-on:click="patientSearch()">Search</button> -->
       <router-link to="/new_patient">Or Add a New Patient</router-link>
     </div>
 
@@ -40,12 +41,13 @@
       </div>      
     </div>
 
-    <div v-else-if="!search">
+    <div v-if="!flag">
       <!-- If Search Does Not Return Results, Show All Patients -->
       <div class="table-responsive">
         <table class="table-hover">
           <thead>
             <tr>
+              <td> </td>
               <th>Id</th>
               <th>Name</th>
               <th>Phone Number</th>
@@ -58,7 +60,11 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="item in allPatients" :key="item.id">
+            <tr v-for="item in filteredPatients" :key="item.id">
+              <td>
+                <button v-on:click="deletePatient" v-bind:id="item.id" class="btn btn-success" >Delete Patient</button>
+              </td>
+
               <td>{{ item.id }}</td>
               <td>{{ item.name }}</td>
               <td>{{ item.phone_number }}</td>
@@ -79,7 +85,6 @@
 <script>
 import axios from "axios";
 // The below is a basic framework for searching for patient data
-
 //
 export default {
   name: "Patients",
@@ -90,10 +95,20 @@ export default {
       search: "",
       info: null,
       allPatients: [],
-      searchData: ""
+      searchData: "",
+      flag:false,
     };
   },
-
+  computed: {
+  filteredPatients: function(){
+    let filtered= this.allPatients.filter(value=>{
+      return value.name.match(new RegExp(this.search,"i"));//?case insensative, happen anywhere
+    });
+    return filtered.sort((a,b)=>{
+     return a.name-b.name;
+      });
+  }
+  },
   mounted() {
     axios
       .get("http://localhost:8081/api/patients")
@@ -105,7 +120,7 @@ export default {
         console.log("Error: ", err);
       });
   },
-  methods: {
+  
     patientSearch() {
       axios
         .get("http://localhost:8081/api/patients")
@@ -116,10 +131,30 @@ export default {
         );
       const searchData = this.info;
       console.log("atx:", searchData);
-      const results = searchData.find(patient => {
+      const results = searchData.filter(patient => {
         return patient.name.toLowerCase() === this.search.toLowerCase();
       });
       this.patients = results;
+      this.flag=true;
+    },
+  methods: {
+    deletePatient() {
+      // event.preventDefault();
+      // console.log("this: ",this);
+      console.log("this.Patients: ", this.filteredPatients);
+      let deletedPatient = this.filteredPatients.id;
+      console.log(deletedPatient);
+
+      // eslint-disable-next-line no-undef
+      axios.post("http://localhost:8081/api/patient/:id", newPatient)
+      .then(response => {
+        console.log("response: ", response);
+      })
+        //  { // THIS IS NOT WORKING!!!! GETTING ERROR FOR THIS ROUTE
+    
+      .catch(function(error) {
+        console.log("error: ", error);
+      });
     }
   }
 };
@@ -140,7 +175,6 @@ export default {
 li {
   list-style-type: none;
 }
-
 td,
 th {
   padding-left: 15px;

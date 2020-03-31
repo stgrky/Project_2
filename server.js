@@ -2,9 +2,8 @@
 // Dependencies
 // =============================================================
 const express = require("express");
-const serveStatic = require("serve-static");
 // const serveStatic = require("serve-static");
-const path = require("path");
+// const path = require("path");
 
 
 // Sets up the Express App
@@ -20,7 +19,7 @@ app.use(express.json());
 let db = require("./models");
 
 // Static directory
-app.use(serveStatic(path.join(__dirname + "/dist")));
+app.use(express.static("dist"));
 
 // Routes
 // =============================================================
