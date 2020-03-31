@@ -66,45 +66,7 @@
 </template>
 
 <script>
-// eslint-disable-next-line no-unused-vars
 import axios from "axios";
-
-// import app from "../../server";
-// import Vue from "vue";
-// var db = require("../models");
-
-// app = new Vue({
-//   el: "#myapp",
-//   data: {
-//     name: "",
-//     phone_number: "",
-//     city: "",
-//     symptoms: "",
-//     infectedQuestion: "",
-//     treatment: "",
-//     admittedQuestion: "",
-//     doctor: ""
-//   },
-//   methods: {
-//     addPatient: function() {
-//       axios.post("/api/patients", {
-//         name: this.name,
-//         phone_number: this.phone_number,
-//         city: this.city,
-//         symptoms: this.symptoms,
-//         infectedQuestion: this.infectedQuestion,
-//         treatment: this.treatment,
-//         admittedQuestion: this.admittedQuestion, 
-//         doctor: this.doctor
-//       }).then(function (response) {
-//         alert(response.data);
-//       }).catch(function (err) {
-//         console.log(err);
-//       });
-//     }
-//   }
-// });
-
 
 // Mounting Data
 export default {
@@ -126,28 +88,32 @@ export default {
   },
 
   methods: {
-    addPatient() {
+    addPatient(event) {
+      event.preventDefault();
+      let newPatient = {
+        name: this.name,
+        phone_number: this.phone_number,
+        city: this.city,
+        symptoms: this.symptoms,
+        infectedQuestion: this.infectedQuestion,
+        treatment: this.treatment,
+        admittedQuestion: this.admittedQuestion, 
+        doctor: this.doctor
+      };
+      console.log(newPatient);
       axios
-        .post("/api/patients", { // THIS IS NOT WORKING!!!! GETTING ERROR FOR THIS ROUTE
-        //console logged all below and Correctly working
-          name: this.name,
-          phone_number: this.phone_number,
-          city: this.city,
-          symptoms: this.symptoms,
-          infectedQuestion: this.infectedQuestion,
-          treatment: this.treatment,
-          admittedQuestion: this.admittedQuestion, 
-          doctor: this.doctor
-        }, console.log(this.name))
-        .then(function(response) {
-          console.log("a: ",response);
-          console.log("b: ",response.data);
-          let output = response.data;
-          console.log("c: ", output);
-        })
+        .post("/api/patients", newPatient)
+        //  { // THIS IS NOT WORKING!!!! GETTING ERROR FOR THIS ROUTE
+        // //console logged all below and Correctly working
+        // }, console.log(this.name))
+        // .then(function(response) {
+        //   console.log("a: ",response);
+        //   console.log("b: ",response.data);
+        //   let output = response.data;
+        //   console.log("c: ", output);
+        // })
         .catch(function(error) {
-          let output = error;
-          console.log(output);
+          console.log(error);
         });
     }
   }
