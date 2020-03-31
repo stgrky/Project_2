@@ -47,6 +47,10 @@
         <table class="table-hover">
           <tbody>
             <tr v-for="item in filteredPatients" :key="item.id">
+              <td>
+                <button class="btn btn-success" id="deleteBtn" v-bind="item.id">Delete Patient</button>
+              </td>
+
               <td>{{ item.id }}</td>
               <td>{{ item.name }}</td>
               <td>{{ item.phone_number }}</td>

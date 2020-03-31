@@ -42,4 +42,17 @@ module.exports = function(app) {
       res.json(dbPatients);
     });
   });
+
+  // Delete Patient with the id
+  app.delete("/api/patient/:id", function(req, res) {
+    // NOT REQUIRED FOR PROJECT, BUT FIGURED WE'D DO IT ANYWAYS.
+    // CAN ALWAYS REMOVE IF WE WANT!
+    db.Patients.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbPatients) {
+      res.json(dbPatients);
+    });
+  });
 };
