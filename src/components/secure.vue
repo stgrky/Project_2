@@ -5,41 +5,14 @@
       <h2>Search Your Patient Below</h2>
       <input id="bubbles" type="text" v-model="search" 
        placeholder="Patient Name" />
-      <button id="bubbles-two" type="button" v-on:click="patientSearch()">Search</button>
+      <!-- <button id="bubbles-two" type="button" v-on:click="patientSearch()">Search</button> -->
       <router-link to="/new_patient">Or Add a New Patient</router-link>
     </div>
-    <!-- If Search Returns Results, Run This Table -->
-    <div v-if="flag">
-      <ul>
-        <li>ID: {{patients.id}}</li>
-        <li>Name: {{patients.name}}</li>
-        <li>Phone Number: {{patients.phone_number}}</li>
-        <li>City: {{patients.city}}</li>
-        <li>Symptoms: {{patients.symptoms}}</li>
-        <li>Infected?: {{patients.infected}}</li>
-        <li>Treatment: {{patients.treatment}}</li>
-        <li>Admitted?: {{patients.admitted}}</li>
-        <li>Doctor: {{patients.doctor}}</li>
-      </ul>
-    </div>
 
-    <div v-else-if="!flag">
+    <div v-if="!flag">
       <!-- If Search Does Not Return Results, Show All Patients -->
       <div class="table-responsive">
         <table class="table-hover">
-          <thead>
-            <tr>
-              <th>Id</th>
-              <th>Name</th>
-              <th>Phone Number</th>
-              <th>City</th>
-              <th>Symptoms</th>
-              <th>Infected</th>
-              <th>Treatment</th>
-              <th>Admitted</th>
-              <th>Doctor</th>
-            </tr>
-          </thead>
           <tbody>
             <tr v-for="item in filteredPatients" :key="item.id">
               <td>{{ item.id }}</td>
@@ -82,7 +55,9 @@ export default {
     let filtered= this.allPatients.filter(value=>{
       return value.name.match(new RegExp(this.search,"i"));//?case insensative, happen anywhere
     });
-    return filtered;
+    return filtered.sort((a,b)=>{
+     return a.name-b.name;
+      });
   }
 
 
@@ -99,10 +74,7 @@ export default {
         console.log("Error: ", err);
       });
   },
-  methods: {
-    nicksMethods(){
-      console.log(this.search);
-    },
+  
     patientSearch() {
       axios
         .get("http://localhost:8081/api/patients")
@@ -119,8 +91,8 @@ export default {
       this.patients = results;
       this.flag=true;
     }
-  }
-};
+  };
+
 </script>
 
 
