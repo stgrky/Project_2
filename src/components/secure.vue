@@ -122,7 +122,12 @@ export default {
       });
       this.patients = results;
       this.flag=true;
-    }
+    },
+
+    // deletePatient() {
+    //   axios.get("/api/patient/:id")
+    //   .then ()
+    // }
   };
 </script>
 
