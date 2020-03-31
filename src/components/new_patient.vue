@@ -103,11 +103,15 @@ export default {
       };
       console.log(newPatient);
 
-      axios.post("/api/patients", newPatient)
+      // eslint-disable-next-line no-undef
+      axios.post(process.env.JAWSDB_URL, newPatient)
+      .then(response => {
+        console.log("response: ", response);
+      })
         //  { // THIS IS NOT WORKING!!!! GETTING ERROR FOR THIS ROUTE
     
       .catch(function(error) {
-        console.log(error);
+        console.log("error: ", error);
       });
     }
   }
