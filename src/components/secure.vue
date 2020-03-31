@@ -9,12 +9,48 @@
       <router-link to="/new_patient">Or Add a New Patient</router-link>
     </div>
 
+    <!-- If Search Returns Results, Run This Table -->
+    <div v-if="search">
+      <div class="table-responsive">
+            <table class="table-hover">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Phone Number</th>
+                        <th>City</th>
+                        <th>Symptoms</th>
+                        <th>Infected</th>
+                        <th>Treatment</th>
+                        <th>Admitted</th>
+                        <th>Doctor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <td> {{patients.id}} </td>
+                    <td> {{patients.name}} </td>
+                    <td> {{patients.phone_number}} </td>
+                    <td> {{patients.city}} </td>
+                    <td> {{patients.symptoms}} </td>
+                    <td> {{patients.infected}} </td>
+                    <td> {{patients.treatment}} </td>
+                    <td> {{patients.admitted}} </td>
+                    <td> {{patients.doctor}} </td>
+                </tbody>
+            </table>
+      </div>      
+    </div>
+
     <div v-if="!flag">
       <!-- If Search Does Not Return Results, Show All Patients -->
       <div class="table-responsive">
         <table class="table-hover">
           <tbody>
             <tr v-for="item in filteredPatients" :key="item.id">
+              <td>
+                <button class="btn btn-success" id="deleteBtn" v-bind="item.id">Delete Patient</button>
+              </td>
+
               <td>{{ item.id }}</td>
               <td>{{ item.name }}</td>
               <td>{{ item.phone_number }}</td>
@@ -35,7 +71,6 @@
 <script>
 import axios from "axios";
 // The below is a basic framework for searching for patient data
-
 //
 export default {
   name: "Patients",
@@ -59,10 +94,7 @@ export default {
      return a.name-b.name;
       });
   }
-
-
   },
-
   mounted() {
     axios
       .get("http://localhost:8081/api/patients")
@@ -90,9 +122,13 @@ export default {
       });
       this.patients = results;
       this.flag=true;
-    }
-  };
+    },
 
+    // deletePatient() {
+    //   axios.get("/api/patient/:id")
+    //   .then ()
+    // }
+  };
 </script>
 
 
@@ -103,16 +139,13 @@ export default {
   padding: 20px;
   margin-top: 10px;
 }
-
 .single-patient {
   width: 250px;
   border: 3px solid black;
 }
-
 li {
   list-style-type: none;
 }
-
 td,
 th {
   padding-left: 15px;

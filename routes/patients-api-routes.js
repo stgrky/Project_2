@@ -1,4 +1,5 @@
 var db = require("../models");
+// let newPatient = require("../src");
 
 module.exports = function(app) {
   // Find all Patients
@@ -19,31 +20,30 @@ module.exports = function(app) {
       res.json(dbPatients);
     });
   });
+
+   // Find all Patients with the name
+   app.get("/api/patients/:name", function(req, res) {
+    db.Patients.findAll({
+      where: {
+        name: req.params.name
+      }
+    }).then(function(dbPatients) {
+      res.json(dbPatients);
+    });
+  });
     
+
   // Create an patient
   app.post("/api/patient", function(req, res) {
     console.log(req.body);
+    // let newPatient;
+    // console.log("new Patient: ", newPatient);
     db.Patients.create(req.body).then(function(dbPatients) {
       res.json(dbPatients);
     });
   });
 
-   // updating Patients
-   app.put("/api/patient", function(req, res) {
-    // NOT REQUIRED FOR PROJECT, BUT FIGURED WE'D DO IT ANYWAYS.
-    // CAN ALWAYS REMOVE IF WE WANT!
-    db.Patients.update(req.body,
-      {
-        where: {
-          id: req.body.id
-        }
-      })
-      .then(function(dbPatients) {
-        res.json(dbPatients);
-      });
-  });
-    
-  // Delete the Doctor with the id
+  // Delete Patient with the id
   app.delete("/api/patient/:id", function(req, res) {
     // NOT REQUIRED FOR PROJECT, BUT FIGURED WE'D DO IT ANYWAYS.
     // CAN ALWAYS REMOVE IF WE WANT!
@@ -55,5 +55,4 @@ module.exports = function(app) {
       res.json(dbPatients);
     });
   });
-
 };
