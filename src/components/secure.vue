@@ -55,7 +55,7 @@ export default {
     let filtered= this.allPatients.filter(value=>{
       return value.name.match(new RegExp(this.search,"i"));//?case insensative, happen anywhere
     });
-    return this.searchData((a,b)=>{
+    return filtered.sort((a,b)=>{
      return a.name-b.name;
       });
   }
