@@ -101,19 +101,13 @@ export default {
         doctor: this.doctor
       };
       console.log(newPatient);
+
       axios.post("/api/patients", newPatient)
         //  { // THIS IS NOT WORKING!!!! GETTING ERROR FOR THIS ROUTE
-        // //console logged all below and Correctly working
-        // }, console.log(this.name))
-        // .then(function(response) {
-        //   console.log("a: ",response);
-        //   console.log("b: ",response.data);
-        //   let output = response.data;
-        //   console.log("c: ", output);
-        // })
-        .catch(function(error) {
-          console.log(error);
-        });
+    
+      .catch(function(error) {
+        console.log(error);
+      });
     }
   }
 };
