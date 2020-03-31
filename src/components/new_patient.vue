@@ -15,12 +15,12 @@
               
               <div class="form-questions">
                 <br>
-                <span>Infected?: {{ infectedQuestion }} </span>
+                <span>Infected?: {{ infected }} </span>
                 <br>
-                <input type="radio" id="yes" value="Yes" v-model="infectedQuestion">
+                <input type="radio" id="yes" value="true" v-model="infected">
                 <label for="yes">Yes</label>
                 <br>
-                <input type="radio" id="no" value="No" v-model="infectedQuestion">
+                <input type="radio" id="no" value="false" v-model="infected">
                 <label for="no">No</label>
                 <br>
               </div>
@@ -29,12 +29,12 @@
               
               <div class="form-questions">
                 <br>
-                <span>Admitted?: {{ admittedQuestion }} </span>
+                <span>Admitted?: {{ admitted }} </span>
                 <br>
-                <input type="radio" id="yes2" value="Yes" v-model="admittedQuestion">
+                <input type="radio" id="yes2" value="true" v-model="admitted">
                 <label for="yes2">Yes</label>
                 <br>
-                <input type="radio" id="no2" value="No" v-model="admittedQuestion">
+                <input type="radio" id="no2" value="false" v-model="admitted">
                 <label for="no2">No</label>
                 <br>
               </div>
@@ -49,8 +49,8 @@
             <pre>Phone Number: {{phone_number}}</pre>
             <pre>City: {{city}}</pre>
             <pre>Symptoms: {{symptoms}}</pre>
-            <pre>Infected?: {{infectedQuestion}}</pre>
-            <pre>Admitted?: {{admittedQuestion}}</pre>
+            <pre>Infected?: {{infected}}</pre>
+            <pre>Admitted?: {{admitted}}</pre>
             <pre>Doctor Name: {{doctor}}</pre>
           </div>
         </div>
@@ -74,9 +74,9 @@ export default {
       phone_number: "",
       city: "",
       symptoms: "",
-      infectedQuestion: "",
+      infected: "",
       treatment: "",
-      admittedQuestion: "",
+      admitted: "",
       doctor: ""
     };
   },
@@ -86,12 +86,12 @@ export default {
       event.preventDefault();
       let newPatient = {
         name: this.name,
-        phone_number: this.phone_number,
+        phone_number: parseInt(this.phone_number),
         city: this.city,
         symptoms: this.symptoms,
-        infectedQuestion: this.infectedQuestion,
+        infected: this.infected,
         treatment: this.treatment,
-        admittedQuestion: this.admittedQuestion, 
+        admitted: this.admitted, 
         doctor: this.doctor
       };
       console.log(newPatient);
