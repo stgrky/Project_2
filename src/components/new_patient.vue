@@ -45,9 +45,6 @@
             </form>
             <br>
             <strong>New Patient Preview:</strong>
-            <!-- <pre>{{addPatient}}</pre> 
-            function () { [native code] } -->
-
             <pre>Name: {{name}}</pre>
             <pre>Phone Number: {{phone_number}}</pre>
             <pre>City: {{city}}</pre>
@@ -55,9 +52,6 @@
             <pre>Infected?: {{infectedQuestion}}</pre>
             <pre>Admitted?: {{admittedQuestion}}</pre>
             <pre>Doctor Name: {{doctor}}</pre>
-        
-          <!-- {{ output }} nothing shows for this  -->
-
           </div>
         </div>
       </div>
@@ -66,7 +60,6 @@
 </template>
 
 <script>
-// import db from "../../models";
 import axios from "axios";
 
 // Mounting Data
@@ -104,7 +97,7 @@ export default {
       console.log(newPatient);
 
       // eslint-disable-next-line no-undef
-      axios.post(process.env.JAWSDB_URL, newPatient)
+      axios.post("http://localhost:8081/api/patient", newPatient)
       .then(response => {
         console.log("response: ", response);
       })

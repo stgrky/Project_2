@@ -8,7 +8,6 @@
       <!-- <button id="bubbles-two" type="button" v-on:click="patientSearch()">Search</button> -->
       <router-link to="/new_patient">Or Add a New Patient</router-link>
     </div>
-<<<<<<< HEAD
 
     <!-- If Search Returns Results, Run This Table -->
     <div v-if="search">
@@ -41,8 +40,6 @@
             </table>
       </div>      
     </div>
-=======
->>>>>>> e15ece65dec63b05dd87030479ad06fd1495c934
 
     <div v-if="!flag">
       <!-- If Search Does Not Return Results, Show All Patients -->
@@ -70,7 +67,6 @@
 <script>
 import axios from "axios";
 // The below is a basic framework for searching for patient data
-
 //
 export default {
   name: "Patients",
@@ -94,10 +90,7 @@ export default {
      return a.name-b.name;
       });
   }
-
-
   },
-
   mounted() {
     axios
       .get("http://localhost:8081/api/patients")
@@ -127,7 +120,6 @@ export default {
       this.flag=true;
     }
   };
-
 </script>
 
 
@@ -145,7 +137,6 @@ export default {
 li {
   list-style-type: none;
 }
-
 td,
 th {
   padding-left: 15px;
