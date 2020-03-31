@@ -27,6 +27,7 @@ const router = new VueRouter ({
 
 Vue.config.productionTip = false;
 
+// Render and Mount App
 new Vue({
   render: h => h(App),
   router,

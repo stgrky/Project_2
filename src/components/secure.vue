@@ -6,6 +6,7 @@
     <input id="bubbles" type="text" v-model="search" placeholder="Patient Name" />
     <button id="bubbles-two" type="button" v-on:click="patientSearch()">Search</button>   
 
+<!-- If Search Returns Results, Run This Table -->
   <div v-if="search">
     <ul>
       <li> ID: {{patients.id}} </li>
@@ -21,7 +22,7 @@
   </div>
 
   <div v-else-if="!search"> 
-    <!-- {{allPatients}} -->
+    <!-- If Search Does Not Return Results, Show All Patients -->
     <div class="table-responsive">
             <table class="table-hover">
                 <thead>
@@ -56,7 +57,6 @@
     <!-- Adding New Patient
     <h1>Add a Patient - {{ addPatient.name }} </h1>
     <input id="bubbles-three" type="text" v-model="addPatient.name" placeholder="Patient Name" />
-    <input id="bubbles-three" type="text" v-model="addPatient.Id" placeholder="ID" />
     <input id="bubbles-three" type="text" v-model="addPatient.phoneNumber" placeholder="Phone Number" />
     <input id="bubbles-three" type="text" v-model="addPatient.city" placeholder="City" />
     <input id="bubbles-three" type="text" v-model="addPatient.symptoms" placeholder="Symptoms" />
@@ -122,22 +122,23 @@ export default {
           // console.log("results: ", results);
           // response.send(results);
     }
-  };
+}
+};
 
 
-    var patientString = new addPatient({
-      data: function(){
-      return {
-        addPatient: {
-          name: "",
-          phone_number: "",
-          city: "",
-          symptoms: "",
-          infectedQuestion: "",
-          treatment: "",
-          admitted: "",
-          doctor: "",
-          }
+//     var patientString = new addPatient({
+//       data: function(){
+//       return {
+//         addPatient: {
+//           name: "",
+//           phone_number: "",
+//           city: "",
+//           symptoms: "",
+//           infectedQuestion: "",
+//           treatment: "",
+//           admitted: "",
+//           doctor: "",
+//           }
 //           .then(
 //           console.log(addPatient),
 //           axios.post("http://localhost:8081/api/patient"))
