@@ -60,9 +60,9 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="item in filteredPatients" :key="item.id">
+            <tr v-for="item in filteredPatients" :key="item.id" :data-id="item.id">
               <td>
-                <button v-on:click="deletePatient" v-bind:id="item.id" class="btn btn-success" >Delete Patient {{ item.id}} </button>
+                <button v-on:click="deletePatient(item.id)" v-bind:id="item.id" class="btn btn-success" >Delete Patient {{ item.id }} </button>
               </td>
 
               <td>{{ item.id }}</td>
@@ -85,7 +85,7 @@
 <script>
 import axios from "axios";
 // The below is a basic framework for searching for patient data
-//
+
 export default {
   name: "Patients",
   data() {
@@ -96,7 +96,7 @@ export default {
       info: null,
       allPatients: [],
       searchData: "",
-      flag:false,
+      flag:false
     };
   },
   computed: {
@@ -126,11 +126,10 @@ export default {
         .get("/api/patients")
         .then(
           response => (
-            console.log("response: ", response), (this.info = response.data)
+            (this.info = response.data)
           )
         );
       const searchData = this.info;
-      console.log("atx:", searchData);
       const results = searchData.filter(patient => {
         return patient.name.toLowerCase() === this.search.toLowerCase();
       });
@@ -138,22 +137,15 @@ export default {
       this.flag=true;
     },
   methods: {
-    deletePatient() {
-      // event.preventDefault();
-      console.log("this.Patients: ", this.filteredPatients[0].id);
-      let deletedPatient = this.filteredPatients.id;
-      console.log(deletedPatient);
-
-      // eslint-disable-next-line no-undef
-      axios.post("/api/patient/:id", newPatient)
+    deletePatient(btnID) {
+      axios.delete(`/api/patient/${btnID}`)
       .then(response => {
         console.log("response: ", response);
-      })
-        //  { // THIS IS NOT WORKING!!!! GETTING ERROR FOR THIS ROUTE
-    
+      })    
       .catch(function(error) {
         console.log("error: ", error);
       });
+      location.reload(); // reloads to login page!!!
     }
   }
 };

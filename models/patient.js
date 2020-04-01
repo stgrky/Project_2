@@ -35,5 +35,3 @@ module.exports = function(sequelize, DataTypes) {
 
     return Patient;
 };
-
-// foreign key (doctor_id) references doctors(doctor_id)  
