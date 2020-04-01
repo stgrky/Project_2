@@ -106,7 +106,6 @@ export default {
         admitted: this.admitted, 
         doctor: this.doctor
       };
-      console.log(newPatient);
 
       // eslint-disable-next-line no-undef
       axios.post("/api/patient", newPatient)
