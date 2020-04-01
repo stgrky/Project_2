@@ -112,6 +112,7 @@ export default {
       axios.post("/api/patient", newPatient)
       .then(response => {
         console.log("response: ", response);
+        alert("New Patient Added!");
       })
         //  { // THIS IS NOT WORKING!!!! GETTING ERROR FOR THIS ROUTE
     
