@@ -2,17 +2,15 @@
   <div id="login">
     <img class="logo" src="../assets/c19-logo.jpg" alt="c19 logo" />
 
-    <input id="bubbles" type="text" name="username" v-model="input.username" placeholder="Username" />
-    <input
-      id="bubbles"
-      type="password"
-      name="password"
-      v-model="input.password"
-      placeholder="Password"
-    />
- 
+    <h3>You have now been logged out of the database.</h3>
 
-    <h6>A COVID-19 PATIENT DATABASE</h6>
+    <p>To return to login</p>
+
+    <button id="bubbles-login" type="button" v-on:click="login()">Login</button>
+
+    <h6>For the latest COVID-19 guidelines and information please visit the CDC website</h6>
+    <a href="https://www.cdc.gov/">CDC.gov</a>
+
   </div>
 </template>
 
@@ -23,6 +21,8 @@ body {
   background: url(../assets/covid-bkgrd.jpg);
   background-size: 100%;
   background-repeat: no-repeat;
+  text-align: center;
+  font-size: 20px;
 }
 
 .logo {
@@ -40,6 +40,20 @@ body {
   margin: 0 auto;
   margin-top: 20%;
   padding: 100px;
+}
+
+#bubbles-two {
+  padding: 5px;
+  border-radius: 20px;
+  display: block;
+  margin: 15px auto;
+  width: 100px;
+  outline: none;
+}
+
+#bubbles-two:hover {
+  background-color: #bf9000;
+  outline: none;
 }
 
 h6 {

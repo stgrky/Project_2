@@ -1,5 +1,6 @@
 <template>
   <div id="secure">
+  
     <div>
       <h1>Patient List - {{ search }}</h1>
       <h2>Search Your Patient Below</h2>
