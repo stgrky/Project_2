@@ -6,7 +6,6 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "local": "npm run build && node server.js",
     "start": "node server.js",
     "heroku-postbuild": "vue-cli-service build && node server.js"
   },
