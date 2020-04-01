@@ -4,7 +4,10 @@
     <div class="row justify-center-content">
       <div class="col-md-12">
         <div class="card">
-          <div class="card-header">New Patient<strong> : {{ name }}</strong></div>
+          <div class="card-header">
+            New Patient
+            <strong>: {{ name }}</strong>
+          </div>
 
           <div class="card-body" id="myapp">
             <form @submit="addPatient">
@@ -43,7 +46,12 @@
                   <strong>{{ infected }}</strong>
                 </div>
               </div>
-              <input class="form-control bubbles-three" type="text" v-model="treatment" placeholder="Treatment" />
+              <input
+                class="form-control bubbles-three"
+                type="text"
+                v-model="treatment"
+                placeholder="Treatment"
+              />
               <div class="admitted-box">
                 <b-form-group label="Admitted to Hospital?">
                   <b-form-radio v-model="admitted" name="admitted-radio" value="true">Yes</b-form-radio>
@@ -77,8 +85,7 @@ import axios from "axios";
 
 // Mounting Data
 export default {
-  mounted() {
-  },
+  mounted() {},
 
   data() {
     return {
@@ -93,7 +100,7 @@ export default {
     };
   },
 
-// Post New Patient Data Back to DB
+  // Post New Patient Data Back to DB
   methods: {
     addPatient(event) {
       event.preventDefault();
@@ -104,30 +111,32 @@ export default {
         symptoms: this.symptoms,
         infected: this.infected,
         treatment: this.treatment,
-        admitted: this.admitted, 
+        admitted: this.admitted,
         doctor: this.doctor
       };
 
       // eslint-disable-next-line no-undef
-      axios.post("/api/patient", newPatient)
-      .then(response => {
-        console.log("response: ", response);
-        alert("New Patient Added!");
-        this.$router.push("/");
-        console.log("Success");
-      })
+      axios
+        .post("/api/patient", newPatient)
+        .then(response => {
+          console.log("response: ", response);
+          alert("New Patient Added!");
+          this.$router.push("/secure");
+          console.log("Success");
+        })
         //  { // THIS IS NOT WORKING!!!! GETTING ERROR FOR THIS ROUTE
-    
-      .catch(function(error) {
-        console.log("error: ", error);
-      });
+
+        .catch(function(error) {
+          console.log("error: ", error);
+        });
     }
   }
 };
 </script>
 
 <style>
-#yes, #no {
+#yes,
+#no {
   width: 15px;
 }
 
@@ -141,10 +150,10 @@ export default {
 }
 
 .container {
-    width: 100%;
+  width: 100%;
 }
 
 .btn {
-    color: black;
+  color: black;
 }
 </style>
