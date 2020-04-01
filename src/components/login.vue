@@ -44,9 +44,6 @@ export default {
       } else {
         console.log("A username and password must be present");
       }
-    }, 
-    SignUp() {
-
     }
   }
 };
