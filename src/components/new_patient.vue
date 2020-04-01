@@ -109,7 +109,7 @@ export default {
       console.log(newPatient);
 
       // eslint-disable-next-line no-undef
-      axios.post("http://localhost:8081/api/patient", newPatient)
+      axios.post("/api/patient", newPatient)
       .then(response => {
         console.log("response: ", response);
       })
