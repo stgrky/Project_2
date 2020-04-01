@@ -62,7 +62,7 @@
           <tbody>
             <tr v-for="item in filteredPatients" :key="item.id">
               <td>
-                <button v-on:click="deletePatient" v-bind:id="item.id" class="btn btn-success" >Delete Patient</button>
+                <button v-on:click="deletePatient" v-bind:id="item.id" class="btn btn-success" >Delete Patient {{ item.id}} </button>
               </td>
 
               <td>{{ item.id }}</td>
@@ -140,8 +140,7 @@ export default {
   methods: {
     deletePatient() {
       // event.preventDefault();
-      // console.log("this: ",this);
-      console.log("this.Patients: ", this.filteredPatients);
+      console.log("this.Patients: ", this.filteredPatients[0].id);
       let deletedPatient = this.filteredPatients.id;
       console.log(deletedPatient);
 

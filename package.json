@@ -6,7 +6,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "start": "node server.js"
+    "start": "node server.js",
+    "asdf": "npm run build && node server.js"
   },
   "dependencies": {
     "@vue/cli": "^4.2.3",
