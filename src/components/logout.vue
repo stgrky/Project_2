@@ -1,7 +1,7 @@
 <template id = "body">
   <div id="login">
-      <img class="logo" src="../assets/c19-logo.jpg" alt="c19 logo">
-    
+    <img class="logo" src="../assets/c19-logo.jpg" alt="c19 logo" />
+
     <input id="bubbles" type="text" name="username" v-model="input.username" placeholder="Username" />
     <input
       id="bubbles"
@@ -12,7 +12,7 @@
     />
     <button id="bubbles-two" type="button" v-on:click="login()">Login</button>
 
-    <h6>A COVID-19 PATIENT DATABASE</h6> 
+    <h6>A COVID-19 PATIENT DATABASE</h6>
   </div>
 </template>
 
@@ -55,10 +55,9 @@ body {
 }
 
 .logo {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
+  display: block;
+  margin: 10px auto;
+  width: 70px;
 }
 
 #login {
@@ -66,6 +65,7 @@ body {
   border: 1px solid #cccccc;
   border-radius: 20px;
   width: 500px;
+  height: 500px;
   margin: 0 auto;
   margin-top: 20%;
   padding: 100px;
@@ -95,5 +95,12 @@ body {
 #bubbles-two:hover {
   background-color: #bf9000;
   outline: none;
+}
+
+h6 {
+  text-align: center;
+  color: #f9a214;
+  margin-top: 20%;
+  font-size: 16px;
 }
 </style>
