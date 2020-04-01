@@ -1,15 +1,15 @@
 
-# Project 2
+# CORONAVIRUS (COVID-19) PATIENT DATABASE
 
 
 ## INTRODUCTION
 
-
+As a physician I would like easy access to COVID patient results across the state to ensure accurate tracking and reporting of tested patients.
 
 <br>
 
 ## TABLE OF CONTENTS
-
+1. [USAGE](#usage)
 2. [FEATURES](#features)
 3. [INSTALLATION](#installation)
 4. [PREVIEW](#preview)
@@ -20,6 +20,7 @@
 
 ## FEATURES
 
+1. Clients are able to login to patient database by providing their email and password.
 
 
 
@@ -29,13 +30,25 @@
 
 1. To use the application, install (npm install) the following dependencies:
 
-    * express: node framework
+    a. **bycryptjs:** Allows passwords to be hashed
 
-    * bcryptjs: hashes passwords
+    b.  **bootstrap-vue:** Front-end framework works with Vue.js
 
-    * sequelize: 
+    c.  **core-js:** Modular standard library for JavaScript
 
-    * mysql2: 
+    d.  **express:** Node.js framework
+    
+    e.  **express-handlebars:** Allows server-side manipulation of HTML ("templating engine")
+
+    f. **mysql2:** Used with sequelize; allows access to MySQL database.
+
+    g. **routes:** Translates each incoming HTTP request to an action call (static, public method in controller class)
+
+    h.  **sequelize:** ORM designed for Node; allows for handling complex SQL database queries with JavaScript methods
+
+    i.  **vue:** A progressive javascript framework for building user interfaces
+
+    j. **vue-router:** Allows users to switch between pages without refreshing.
 
 2. Users will need to install mySQL in order to create a database.
 
