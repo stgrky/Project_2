@@ -6,7 +6,7 @@
         <div class="card">
           <div class="card-header">New Patient<strong> : {{ name }}</strong></div>
 
-          <div class="card-body">
+          <div class="card-body" id="myapp">
             <form @submit="addPatient">
               <input
                 type="text"
@@ -34,25 +34,25 @@
               />
               <div class="infected-box">
                 <b-form-group label="Infected?">
-                  <b-form-radio class="form-control" v-model="infectedQuestion" name="some-radios" value="Yes">Yes</b-form-radio>
-                  <b-form-radio class="form-control" v-model="infectedQuestion" name="some-radios" value="No">No</b-form-radio>
+                  <b-form-radio class="form-control" v-model="infected" name="some-radios" value="true">Yes</b-form-radio>
+                  <b-form-radio class="form-control" v-model="infected" name="some-radios" value="false">No</b-form-radio>
                 </b-form-group>
 
                 <div class="mt-3">
                   Selected:
-                  <strong>{{ infectedQuestion }}</strong>
+                  <strong>{{ infected }}</strong>
                 </div>
               </div>
               <input class="form-control" type="text" v-model="treatment" placeholder="Treatment" />
               <div class="form-questions">
                 <b-form-group label="Admitted to Hospital?">
-                  <b-form-radio class="form-control" v-model="admittedQuestion" name="admitted-radio" value="Yes">Yes</b-form-radio>
-                  <b-form-radio class="form-control" v-model="admittedQuestion" name="admitted-radio" value="No">No</b-form-radio>
+                  <b-form-radio class="form-control" v-model="admitted" name="admitted-radio" value="true">Yes</b-form-radio>
+                  <b-form-radio class="form-control" v-model="admitted" name="admitted-radio" value="false">No</b-form-radio>
                 </b-form-group>
 
                 <div class="mt-3">
                   Selected:
-                  <strong>{{ admittedQuestion }}</strong>
+                  <strong>{{ admitted }}</strong>
                 </div>
               </div>
               <input
@@ -72,6 +72,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 // Mounting Data
 export default {
   mounted() {
@@ -83,47 +85,49 @@ export default {
       phone_number: "",
       city: "",
       symptoms: "",
-      infectedQuestion: "",
+      infected: "",
       treatment: "",
-      admittedQuestion: "",
+      admitted: "",
       doctor: ""
     };
   },
 
 // Post New Patient Data Back to DB
   methods: {
-    addPatient(e) {
-      e.preventDefault();
-      let currentObj = this;
-      this.axios
-        .post("http://localhost:8081/api/patients", {
-          name: this.name,
-          phone_number: this.phone_number,
-          city: this.city,
-          symptoms: this.symptoms,
-          infectedQuestion: this.infectedQuestion,
-          treatment: this.treatment,
-          admittedQuestion: this.admittedQuestion,
-          doctor: this.doctor
-        })
-        .then(function(response) {
-          currentObj.output = response.data;
-        })
-        .catch(function(error) {
-          currentObj.output = error;
-        });
+    addPatient(event) {
+      event.preventDefault();
+      let newPatient = {
+        name: this.name,
+        phone_number: parseInt(this.phone_number),
+        city: this.city,
+        symptoms: this.symptoms,
+        infected: this.infected,
+        treatment: this.treatment,
+        admitted: this.admitted, 
+        doctor: this.doctor
+      };
+      console.log(newPatient);
+
+      // eslint-disable-next-line no-undef
+      axios.post("http://localhost:8081/api/patient", newPatient)
+      .then(response => {
+        console.log("response: ", response);
+      })
+        //  { // THIS IS NOT WORKING!!!! GETTING ERROR FOR THIS ROUTE
+    
+      .catch(function(error) {
+        console.log("error: ", error);
+      });
     }
   }
 };
 </script>
 
 <style>
-#secure {
-  background-color: #ffffff;
-  border: 1px solid #cccccc;
-  padding: 20px;
-  margin-top: 10px;
+#yes, #no {
+  width: 15px;
 }
+
 .bubbles-three {
   margin: 10px;
   padding: 5px;
@@ -131,20 +135,6 @@ export default {
   margin: 10px;
   width: 100px;
   outline: none;
-}
-
-.single-patient {
-  width: 250px;
-  border: 3px solid black;
-}
-
-li {
-  list-style-type: none;
-}
-
-td,
-th {
-  padding-left: 15px;
 }
 
 .btn {

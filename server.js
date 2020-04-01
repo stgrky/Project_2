@@ -1,3 +1,4 @@
+
 // Dependencies
 // =============================================================
 const express = require("express");
@@ -28,14 +29,14 @@ app.use(express.static("dist"));
 
 // Routes
 // =============================================================
-require("./routes/doctor-api-routes")(app);
+// require("./future-development/doctor-api-routes")(app);
 // require("./routes/html-routes")(app);
 require("./routes/patients-api-routes")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({ force: false }).then(function () {
-  app.listen(PORT, function () {
+db.sequelize.sync({ force: false }).then(function() {
+  app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
 });
