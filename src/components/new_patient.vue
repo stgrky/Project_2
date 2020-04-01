@@ -2,7 +2,7 @@
   <!-- Add New Patient Form -->
   <div class="container">
     <div class="row justify-center-content">
-      <div class="col-md=8">
+      <div class="col-md-12">
         <div class="card">
           <div class="card-header">New Patient<strong> : {{ name }}</strong></div>
 
@@ -34,8 +34,8 @@
               />
               <div class="infected-box">
                 <b-form-group label="Infected?">
-                  <b-form-radio class="form-control" v-model="infected" name="some-radios" value="true">Yes</b-form-radio>
-                  <b-form-radio class="form-control" v-model="infected" name="some-radios" value="false">No</b-form-radio>
+                  <b-form-radio v-model="infected" name="some-radios" value="True">Yes</b-form-radio>
+                  <b-form-radio v-model="infected" name="some-radios" value="False">No</b-form-radio>
                 </b-form-group>
 
                 <div class="mt-3">
@@ -43,11 +43,11 @@
                   <strong>{{ infected }}</strong>
                 </div>
               </div>
-              <input class="form-control" type="text" v-model="treatment" placeholder="Treatment" />
-              <div class="form-questions">
+              <input class="form-control bubbles-three" type="text" v-model="treatment" placeholder="Treatment" />
+              <div class="admitted-box">
                 <b-form-group label="Admitted to Hospital?">
-                  <b-form-radio class="form-control" v-model="admitted" name="admitted-radio" value="true">Yes</b-form-radio>
-                  <b-form-radio class="form-control" v-model="admitted" name="admitted-radio" value="false">No</b-form-radio>
+                  <b-form-radio v-model="admitted" name="admitted-radio" value="True">Yes</b-form-radio>
+                  <b-form-radio v-model="admitted" name="admitted-radio" value="False">No</b-form-radio>
                 </b-form-group>
 
                 <div class="mt-3">
@@ -57,7 +57,7 @@
               </div>
               <input
                 type="text"
-                class="form-control"
+                class="form-control bubbles-three"
                 id="bubbles-three"
                 v-model="doctor"
                 placeholder="Doctor Name"
@@ -134,8 +134,12 @@ export default {
   padding: 5px;
   border-radius: 20px;
   margin: 10px;
-  width: 100px;
+  width: 80%;
   outline: none;
+}
+
+.container {
+    width: 100%;
 }
 
 .btn {
