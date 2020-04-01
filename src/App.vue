@@ -29,6 +29,7 @@ export default {
     },
     logout() {
       this.authenticated = false;
+      
     }
   }
 };

@@ -73,6 +73,7 @@
 
 <script>
 import axios from "axios";
+// import { Router } from 'express';
 
 // Mounting Data
 export default {
@@ -112,6 +113,7 @@ export default {
       .then(response => {
         console.log("response: ", response);
         alert("New Patient Added!");
+        this.$router.push("/");
         console.log("Success");
       })
         //  { // THIS IS NOT WORKING!!!! GETTING ERROR FOR THIS ROUTE
