@@ -12,6 +12,8 @@
     />
     <button id="bubbles-two" type="button" v-on:click="login()">Login</button>
 
+    <router-link to="/signUp">Create New Login</router-link>
+
     <h6>A COVID-19 PATIENT DATABASE</h6> 
   </div>
 </template>
@@ -42,6 +44,9 @@ export default {
       } else {
         console.log("A username and password must be present");
       }
+    }, 
+    SignUp() {
+
     }
   }
 };
