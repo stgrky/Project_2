@@ -34,8 +34,8 @@
               />
               <div class="infected-box">
                 <b-form-group label="Infected?">
-                  <b-form-radio v-model="infected" name="some-radios" value="True">Yes</b-form-radio>
-                  <b-form-radio v-model="infected" name="some-radios" value="False">No</b-form-radio>
+                  <b-form-radio v-model="infected" name="some-radios" value="true">Yes</b-form-radio>
+                  <b-form-radio v-model="infected" name="some-radios" value="false">No</b-form-radio>
                 </b-form-group>
 
                 <div class="mt-3">
@@ -46,8 +46,8 @@
               <input class="form-control bubbles-three" type="text" v-model="treatment" placeholder="Treatment" />
               <div class="admitted-box">
                 <b-form-group label="Admitted to Hospital?">
-                  <b-form-radio v-model="admitted" name="admitted-radio" value="True">Yes</b-form-radio>
-                  <b-form-radio v-model="admitted" name="admitted-radio" value="False">No</b-form-radio>
+                  <b-form-radio v-model="admitted" name="admitted-radio" value="true">Yes</b-form-radio>
+                  <b-form-radio v-model="admitted" name="admitted-radio" value="false">No</b-form-radio>
                 </b-form-group>
 
                 <div class="mt-3">
@@ -112,6 +112,7 @@ export default {
       .then(response => {
         console.log("response: ", response);
         alert("New Patient Added!");
+        console.log("Success");
       })
         //  { // THIS IS NOT WORKING!!!! GETTING ERROR FOR THIS ROUTE
     
