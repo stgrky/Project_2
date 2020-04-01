@@ -111,7 +111,7 @@ export default {
   },
   mounted() {
     axios
-      .get("http://localhost:8081/api/patients")
+      .get("/api/patients")
       .then(response => {
         this.info = response.data;
         this.allPatients = this.info;
@@ -123,7 +123,7 @@ export default {
   
     patientSearch() {
       axios
-        .get("http://localhost:8081/api/patients")
+        .get("/api/patients")
         .then(
           response => (
             console.log("response: ", response), (this.info = response.data)
@@ -146,7 +146,7 @@ export default {
       console.log(deletedPatient);
 
       // eslint-disable-next-line no-undef
-      axios.post("http://localhost:8081/api/patient/:id", newPatient)
+      axios.post("/api/patient/:id", newPatient)
       .then(response => {
         console.log("response: ", response);
       })
