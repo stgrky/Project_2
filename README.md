@@ -9,23 +9,44 @@ As a physician I would like easy access to COVID-19 patient results across the c
 <br>
 
 ## TABLE OF CONTENTS
-1. [USAGE](#usage)
-2. [FEATURES](#features)
-3. [INSTALLATION](#installation)
-4. [PREVIEW](#preview)
-5. [RESOURCES](#resources)
-6. [BADGES](#badges)
+
+1. [FEATURES](#features)
+2. [INSTALLATION](#installation)
+3. [PREVIEW](#preview)
+4. [RESOURCES](#resources)
+5. [BADGES](#badges)
 
 <br>
 
-## USAGE
 
 ## FEATURES
 
-1. Clients are able to login to patient database by providing their email and password.
-    * If user is new, ability to signup. 
+1. Users are able to login to patient database by providing their email and password.
+    * Or new users can sign up for access
+
+2. Users have the ability to search for existing patients or add new ones.
+   The following details can be added: 
+
+    a. Patient Full Name
+
+    b. Phone #
+
+    c. Location of patient
+
+    d. Symptoms
+
+    e. Infection status
+
+    f. Treatment
+
+    g. Hospital admission
+
+    h. Attending physician 
+
+    **If a patient was reported in error, the user can choose a particular pt. and remove them.**
 
 
+3. Upon logging out of the database, a link to the CDC website is available along with the ability to return to the login page.
 
 <br>
 
@@ -69,6 +90,16 @@ Leandra Turner
 
 
 ## RESOURCES
+
+*C19 Logo Maker*: 
+
+www.tailorbrands.com
+
+<br>
+
+*COVID-19 Image*
+
+www.smithsonianmag.com
 
 
 
