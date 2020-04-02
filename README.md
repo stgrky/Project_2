@@ -1,6 +1,8 @@
 
-# CORONAVIRUS (COVID-19) PATIENT DATABASE
+# C19 
+# A COVID-19 Patient Database
 
+<br>
 
 ## INTRODUCTION
 
@@ -43,7 +45,7 @@ As a physician I would like easy access to COVID-19 patient results across the c
 
     h. Attending physician 
 
-    **If a patient was reported in error, the user can choose a particular pt. and remove them.**
+    **If a patient was reported in error, the user can choose a particular person and remove them.**
 
 
 3. Upon logging out of the database, a link to the CDC website is available along with the ability to return to the login page.
@@ -88,6 +90,7 @@ Kendra Kwoka
 
 Leandra Turner
 
+<br>
 
 ## RESOURCES
 
@@ -97,9 +100,9 @@ www.tailorbrands.com
 
 <br>
 
-*COVID-19 Image*
+*COVID-19 Background*
 
-www.smithsonianmag.com
+www.kctv5.com
 
 
 
