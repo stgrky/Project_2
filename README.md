@@ -95,7 +95,6 @@ Leandra Turner
 
 ### PREVIEW
 
-![image](../assets/preview.jpg)
 
 <br>
 
