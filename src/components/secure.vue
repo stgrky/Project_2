@@ -14,7 +14,7 @@
     <div v-if="search">
       <div class="table-responsive">
             <table class="table-hover">
-                <thead>
+                <!-- <thead>
                     <tr>
                         <th>Id</th>
                         <th>First Name</th>
@@ -27,7 +27,7 @@
                         <th>Admitted</th>
                         <th>Doctor</th>
                     </tr>
-                </thead>
+                </thead> -->
                 <tbody>
                     <td> {{patients.id}} </td>
                     <td> {{patients.name}} </td>
@@ -72,7 +72,7 @@
                   class="btn btn-success"
                 >Delete Patient {{ item.id }}</button>
               </td>
-
+              <td></td>
               <td>{{ item.id }}</td>
               <td>{{ item.name }}</td>
               <td>{{ item.lastName }}</td>
