@@ -13,22 +13,22 @@
     <!-- If Search Returns Results, Run This Table -->
     <div v-if="search">
       <div class="table-responsive">
-            <table class="table-hover">
-                <!-- removed table header here so that the header does NOT duplicate -->
-                <tbody>
-                    <td> {{patients.id}} </td>
-                    <td> {{patients.name}} </td>
-                    <td> {{patients.lastName}} </td>
-                    <td> {{patients.phone_number}} </td>
-                    <td> {{patients.city}} </td>
-                    <td> {{patients.symptoms}} </td>
-                    <td> {{patients.infected}} </td>
-                    <td> {{patients.treatment}} </td>
-                    <td> {{patients.admitted}} </td>
-                    <td> {{patients.doctor}} </td>
-                </tbody>
-            </table>
-      </div>      
+        <table class="table-hover">
+          <!-- removed table header here so that the header does NOT duplicate -->
+          <tbody>
+            <td>{{patients.id}}</td>
+            <td>{{patients.name}}</td>
+            <td>{{patients.lastName}}</td>
+            <td>{{patients.phone_number}}</td>
+            <td>{{patients.city}}</td>
+            <td>{{patients.symptoms}}</td>
+            <td>{{patients.infected}}</td>
+            <td>{{patients.treatment}}</td>
+            <td>{{patients.admitted}}</td>
+            <td>{{patients.doctor}}</td>
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <div v-if="!flag">
@@ -59,7 +59,6 @@
                   class="btn btn-success"
                 >Delete Patient {{ item.id }}</button>
               </td>
-              <td></td>
               <td>{{ item.id }}</td>
               <td>{{ item.name }}</td>
               <td>{{ item.lastName }}</td>
@@ -152,6 +151,10 @@ export default {
   border: 1px solid #cccccc;
   padding: 20px;
   margin-top: 10%;
+}
+
+h1 {
+  text-align: left;
 }
 
 .logo-two {
