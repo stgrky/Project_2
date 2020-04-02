@@ -97,7 +97,7 @@ export default {
   computed: {
     filteredPatients: function() {
       let filtered = this.allPatients.filter(value => {
-        return value.name.match(new RegExp(this.search, "i")); //?case insensative, happen anywhere
+        return value.name.match(new RegExp(this.search, "i")); // Is Case-insensitive
       });
       return filtered.sort((a, b) => {
         return a.name - b.name;
@@ -105,6 +105,7 @@ export default {
     }
   },
   mounted() {
+    // Gets data
     axios
       .get("/api/patients")
       .then(response => {
@@ -115,7 +116,7 @@ export default {
         console.log("Error: ", err);
       });
   },
-
+  // Patient Search
   patientSearch() {
     axios.get("/api/patients").then(response => (this.info = response.data));
     const searchData = this.info;
