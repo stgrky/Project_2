@@ -164,7 +164,7 @@ export default {
   padding: 5px;
   border-radius: 20px;
   margin: 10px;
-  width: 80%;
+  width: 400px;
   outline: none;
 } */
 

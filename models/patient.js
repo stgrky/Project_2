@@ -16,8 +16,15 @@ module.exports = function(sequelize, DataTypes) {
             len: [1]
           }
       },
+      lastName: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len: [1]
+        }
+      },
       phone_number: {
-          type: DataTypes.BIGINT,
+          type: DataTypes.STRING,
       },
       city: DataTypes.STRING,
       symptoms: DataTypes.STRING,

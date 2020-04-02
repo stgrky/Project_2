@@ -17,7 +17,8 @@
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Name</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
                         <th>Phone Number</th>
                         <th>City</th>
                         <th>Symptoms</th>
@@ -30,6 +31,7 @@
                 <tbody>
                     <td> {{patients.id}} </td>
                     <td> {{patients.name}} </td>
+                    <td> {{patients.lastName}} </td>
                     <td> {{patients.phone_number}} </td>
                     <td> {{patients.city}} </td>
                     <td> {{patients.symptoms}} </td>
@@ -50,7 +52,8 @@
             <tr>
               <td> </td>
               <th>Id</th>
-              <th>Name</th>
+              <th>First Name</th>
+              <th>Last Name</th>
               <th>Phone Number</th>
               <th>City</th>
               <th>Symptoms</th>
@@ -68,6 +71,7 @@
 
               <td>{{ item.id }}</td>
               <td>{{ item.name }}</td>
+              <td> {{ item.lastName }} </td>
               <td>{{ item.phone_number }}</td>
               <td>{{ item.city }}</td>
               <td>{{ item.symptoms }}</td>
