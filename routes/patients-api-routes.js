@@ -1,5 +1,4 @@
 var db = require("../models");
-// let newPatient = require("../src");
 
 module.exports = function(app) {
   // Find all Patients
@@ -36,13 +35,12 @@ module.exports = function(app) {
   // Create an patient
   app.post("/api/patient", function(req, res) {
     console.log(req.body);
-    // let newPatient;
-    // console.log("new Patient: ", newPatient);
     db.Patients.create(req.body).then(function(dbPatients) {
       res.json(dbPatients);
     });
   });
 
+  
   // Delete Patient with the id
   app.delete("/api/patient/:id", function(req, res) {
     // NOT REQUIRED FOR PROJECT, BUT FIGURED WE'D DO IT ANYWAYS.

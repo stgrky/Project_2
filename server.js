@@ -30,7 +30,7 @@ app.use(express.static("dist"));
 // Routes
 // =============================================================
 // require("./future-development/doctor-api-routes")(app);
-// require("./routes/html-routes")(app);
+require("./routes/user-api-routes")(app);
 require("./routes/patients-api-routes")(app);
 
 // Syncing our sequelize models and then starting our Express app
