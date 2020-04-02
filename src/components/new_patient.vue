@@ -21,7 +21,7 @@
                 type="text"
                 class="form-control bubbles-three"
                 v-model="phone_number"
-                placeholder="Phone Number"
+                placeholder="(XXX) XXX-XXXX"
               />
               <input
                 type="text"
@@ -98,6 +98,12 @@ export default {
       admitted: "",
       doctor: ""
     };
+  },
+
+  watch: {
+    phone_number() {
+      this.phone_number = this.phone_number.replace(/[^0-9]/g, "");
+    }
   },
 
   // Post New Patient Data Back to DB
