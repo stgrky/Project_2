@@ -6,38 +6,39 @@
         <div class="card">
           <div class="card-header">
             New Patient
-            <strong>: {{ name }} {{ lastName }}</strong>
+            <strong>: {{ name }} {{lastName}}</strong>
           </div>
 
           <div class="card-body" id="myapp">
             <form @submit="addPatient">
               <input
                 type="text"
-                class="form-control bubbles-three"
+                class="form-control"
                 v-model="name"
                 placeholder="First Name"
               />
-               <input
+              <input
                 type="text"
-                class="form-control bubbles-three"
+                class="form-control"
                 v-model="lastName"
                 placeholder="Last Name"
               />
               <input
                 type="text"
-                class="form-control bubbles-three"
+                class="form-control"
                 v-model="phone_number"
                 placeholder="(XXX) XXX-XXXX"
+                template = "template"
               />
               <input
                 type="text"
-                class="form-control bubbles-three"
+                class="form-control"
                 v-model="city"
                 placeholder="City"
               />
               <input
                 type="text"
-                class="form-control bubbles-three"
+                class="form-control"
                 v-model="symptoms"
                 placeholder="Symptoms"
               />
@@ -53,7 +54,7 @@
                 </div>
               </div>
               <input
-                class="form-control bubbles-three"
+                class="form-control"
                 type="text"
                 v-model="treatment"
                 placeholder="Treatment"
@@ -71,8 +72,7 @@
               </div>
               <input
                 type="text"
-                class="form-control bubbles-three"
-                id="bubbles-three"
+                class="form-control"
                 v-model="doctor"
                 placeholder="Doctor Name"
               />
@@ -93,6 +93,10 @@ import axios from "axios";
 export default {
   mounted() {},
 
+  props: [
+      "template"
+  ],
+
   data() {
     return {
       name: "",
@@ -109,9 +113,8 @@ export default {
 
   watch: {
     phone_number() {
-      this.phone_number = this.phone_number
-        .replace(/[^0-9]/g, "")
-        .replace(/^(\d{3})(\d{3})(\d{4})/g, "($1) $2-$3");
+      this.phone_number = this.phone_number.replace(/[^0-9]/g, "")
+      .replace (/^(\d{3})?(\d{3})?(\d{4})/g, "($1) $2-$3");
     }
   },
 
@@ -122,7 +125,7 @@ export default {
       let newPatient = {
         name: this.name,
         lastName: this.lastName,
-        phone_number: this.phone_number,
+        phone_number: parseInt(this.phone_number),
         city: this.city,
         symptoms: this.symptoms,
         infected: this.infected,
@@ -156,13 +159,17 @@ export default {
   width: 15px;
 }
 
-.bubbles-three {
+/* .bubbles-three {
   margin: 10px;
   padding: 5px;
   border-radius: 20px;
   margin: 10px;
   width: 400px;
   outline: none;
+} */
+
+.form-control {
+    width: 50%;
 }
 
 .container {

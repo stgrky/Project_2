@@ -141,17 +141,6 @@ export default {
   },
   methods: {
     deletePatient(btnID) {
-<<<<<<< HEAD
-      axios
-        .delete(`/api/patient/${btnID}`)
-        .then(response => {
-          console.log("response: ", response);
-        })
-        .catch(function(error) {
-          console.log("error: ", error);
-        });
-      location.reload(); // reloads to login page!!!
-=======
       axios.delete(`/api/patient/${btnID}`)
       .then(response => {
         console.log("response: ", response);
@@ -160,7 +149,6 @@ export default {
       .catch(function(error) {
         console.log("error: ", error);
       });
->>>>>>> ba418217d58000f301bd1a06e2def7d0ca48bc47
     }
   }
 };
