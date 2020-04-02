@@ -53,7 +53,7 @@ export default {
 body {
   background: url("../assets/covid-bkgrd.jpg");
   /* background-size: 100%; */
-  /* background-repeat: no-repeat; */
+  background-repeat: repeat;
   text-align: center;
 }
 

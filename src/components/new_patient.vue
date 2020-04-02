@@ -170,6 +170,7 @@ export default {
 
 .form-control {
     width: 50%;
+    margin: 0 auto;
 }
 
 .container {
@@ -178,5 +179,6 @@ export default {
 
 .btn {
   color: black;
+  margin: 10px;
 }
 </style>
