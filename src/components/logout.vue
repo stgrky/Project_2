@@ -6,13 +6,31 @@
 
     <p>To return to login</p>
 
-    <button id="bubbles-login" type="button" v-on:click="login()">Login</button>
+    <!-- <button id="bubbles-login" type="button" v-on:click="login()">Login</button> -->
+    <router-link to="/"  replace>Logout</router-link>
+
 
     <h6>For the latest COVID-19 guidelines and information please visit the CDC website</h6>
     <a href="https://www.cdc.gov/">CDC.gov</a>
   </div>
 </template>
 
+<script>
+export default {
+  name: "Patients",
+  data() {
+    return {
+    };
+  },
+  mounted() {
+  },
+  methods: {
+    logout() {
+
+    }
+  }
+};
+</script>
 
 
 <style>
