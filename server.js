@@ -6,7 +6,6 @@ const cors = require("cors");
 // const serveStatic = require("serve-static");
 // const path = require("path");
 
-
 // Sets up the Express App
 // =============================================================
 let app = express();

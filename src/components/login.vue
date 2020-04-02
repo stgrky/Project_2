@@ -104,13 +104,13 @@ body {
 }
 /* new login link */
 #new-login {
-  margin: 25%;
+  margin-left: 30%;
 }
 
 /* covid db text */
 .covid {
   color: #f9a214;
-  margin-top: 10% !important;
+  margin-top: 20% !important;
   font-size: 16px;
   text-align: center;
 }

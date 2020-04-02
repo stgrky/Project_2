@@ -2,6 +2,10 @@
 # C19 
 # A COVID-19 Patient Database
 
+![covidPic](\src\assets\preview.png)
+
+
+
 <br>
 
 ## INTRODUCTION
@@ -14,7 +18,8 @@ As a physician I would like easy access to COVID-19 patient results across the c
 
 1. [FEATURES](#features)
 2. [INSTALLATION](#installation)
-3. [PREVIEW](#preview)
+3. [CONTRIBUTIONS](#contributions)
+4. [PREVIEW](#preview)
 4. [RESOURCES](#resources)
 5. [BADGES](#badges)
 
@@ -92,6 +97,11 @@ Leandra Turner
 
 <br>
 
+### PREVIEW
+
+
+<br>
+
 ## RESOURCES
 
 *C19 Logo Maker*: 
@@ -103,14 +113,6 @@ www.tailorbrands.com
 *COVID-19 Background*
 
 www.kctv5.com
-
-
-
-<br>
-
-### PREVIEW
-
-![image](will insert image here)
 
 <br>
 
