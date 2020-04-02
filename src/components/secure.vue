@@ -59,7 +59,6 @@
                   class="btn btn-success"
                 >Delete Patient {{ item.id }}</button>
               </td>
-              <td></td>
               <td>{{ item.id }}</td>
               <td>{{ item.name }}</td>
               <td>{{ item.lastName }}</td>
@@ -185,5 +184,12 @@ li {
 td,
 th {
   padding-left: 15px;
+}
+
+body {
+  background: url("../assets/covid-bkgrd.jpg");
+  /* background-size: 100%; */
+  background-repeat: repeat;
+  /* text-align: center; */
 }
 </style>
