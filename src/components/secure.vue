@@ -71,7 +71,7 @@
 
               <td>{{ item.id }}</td>
               <td>{{ item.name }}</td>
-              <td> {{ item.lastName }} </td>
+              <td>{{ item.lastName }}</td>
               <td>{{ item.phone_number }}</td>
               <td>{{ item.city }}</td>
               <td>{{ item.symptoms }}</td>
@@ -146,11 +146,11 @@ export default {
       axios.delete(`/api/patient/${btnID}`)
       .then(response => {
         console.log("response: ", response);
+        this.$router.push("/secure"); // this does not work :(
       })    
       .catch(function(error) {
         console.log("error: ", error);
       });
-      location.reload(); // reloads to login page!!!
     }
   }
 };
