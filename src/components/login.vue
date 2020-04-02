@@ -12,7 +12,7 @@
     />
     <button id="bubbles-two" type="button" v-on:click="login()">Login</button>
 
-    <router-link to="/signUp">Create New Login</router-link>
+    <router-link to="/signUp" class="new-login">Create New Login</router-link>
 
     <h6>A COVID-19 PATIENT DATABASE</h6> 
   </div>
@@ -97,5 +97,13 @@ body {
 #bubbles-two:hover {
   background-color: #bf9000;
   outline: none;
+}
+
+
+h6 {
+  text-align: center;
+  color: #f9a214;
+  margin-top: 10%;
+  font-size: 16px;
 }
 </style>
