@@ -125,7 +125,7 @@ export default {
       let newPatient = {
         name: this.name,
         lastName: this.lastName,
-        phone_number: parseInt(this.phone_number),
+        phone_number: this.phone_number,
         city: this.city,
         symptoms: this.symptoms,
         infected: this.infected,
