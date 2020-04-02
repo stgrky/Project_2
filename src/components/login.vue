@@ -1,7 +1,7 @@
 <template id = "body">
   <div id="login">
-      <img class="logo" src="../assets/c19-logo.jpg" alt="c19 logo">
-    
+    <img class="logo" src="../assets/c19-logo.jpg" alt="c19 logo" />
+
     <input id="bubbles" type="text" name="username" v-model="input.username" placeholder="Username" />
     <input
       id="bubbles"
@@ -12,9 +12,9 @@
     />
     <button id="bubbles-two" type="button" v-on:click="login()">Login</button>
 
-    <router-link to="/signUp">Create New Login</router-link>
+    <router-link to="/signUp" id="new-login">Create New Login</router-link>
 
-    <h6>A COVID-19 PATIENT DATABASE</h6> 
+    <h6>A COVID-19 PATIENT DATABASE</h6>
   </div>
 </template>
 
@@ -54,13 +54,14 @@ body {
   background: url(../assets/covid-bkgrd.jpg);
   background-size: 100%;
   background-repeat: no-repeat;
+  text-align: center;
 }
 
 .logo {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
 
 #login {
@@ -97,5 +98,15 @@ body {
 #bubbles-two:hover {
   background-color: #bf9000;
   outline: none;
+}
+
+#new-login {
+  margin-left: 30%;
+}
+
+h6 {
+  color: #f9a214;
+  margin-top: 20px;
+  font-size: 16px;
 }
 </style>

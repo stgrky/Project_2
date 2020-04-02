@@ -1,5 +1,5 @@
 <template id = "body">
-  <div id="login">
+  <div id="logout">
     <img class="logo" src="../assets/c19-logo.jpg" alt="c19 logo" />
 
     <input id="bubbles" type="text" name="username" v-model="input.username" placeholder="Username" />
@@ -60,7 +60,7 @@ body {
   width: 70px;
 }
 
-#login {
+#logout {
   background-color: #ffffff;
   border: 1px solid #cccccc;
   border-radius: 20px;
