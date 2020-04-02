@@ -16,7 +16,7 @@
               />
 
               <input
-                type="text"
+                type="password"
                 class="form-control bubbles-three"
                 v-model="password"
                 placeholder="password"
@@ -57,6 +57,7 @@ export default {
         .then(response => {
             console.log("userResponse: ", response);
             alert("New User Added!");
+
         })
         .catch(function(err) {
             console.log(err);
