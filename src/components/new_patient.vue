@@ -13,37 +13,17 @@
 
           <div class="card-body" id="myapp">
             <form @submit="addPatient">
-              <input
-                type="text"
-                class="form-control"
-                v-model="name"
-                placeholder="First Name"
-              />
-              <input
-                type="text"
-                class="form-control"
-                v-model="lastName"
-                placeholder="Last Name"
-              />
+              <input type="text" class="form-control" v-model="name" placeholder="First Name" />
+              <input type="text" class="form-control" v-model="lastName" placeholder="Last Name" />
               <input
                 type="text"
                 class="form-control"
                 v-model="phone_number"
                 placeholder="(XXX) XXX-XXXX"
-                template = "template"
+                template="template"
               />
-              <input
-                type="text"
-                class="form-control"
-                v-model="city"
-                placeholder="City"
-              />
-              <input
-                type="text"
-                class="form-control"
-                v-model="symptoms"
-                placeholder="Symptoms"
-              />
+              <input type="text" class="form-control" v-model="city" placeholder="City" />
+              <input type="text" class="form-control" v-model="symptoms" placeholder="Symptoms" />
               <div class="infected-box">
                 <b-form-group label="Infected?">
                   <b-form-radio v-model="infected" name="some-radios" value="true">Yes</b-form-radio>
@@ -55,12 +35,7 @@
                   <strong>{{ infected }}</strong>
                 </div>
               </div>
-              <input
-                class="form-control"
-                type="text"
-                v-model="treatment"
-                placeholder="Treatment"
-              />
+              <input class="form-control" type="text" v-model="treatment" placeholder="Treatment" />
               <div class="admitted-box">
                 <b-form-group label="Admitted to Hospital?">
                   <b-form-radio v-model="admitted" name="admitted-radio" value="true">Yes</b-form-radio>
@@ -72,13 +47,8 @@
                   <strong>{{ admitted }}</strong>
                 </div>
               </div>
-              <input
-                type="text"
-                class="form-control"
-                v-model="doctor"
-                placeholder="Doctor Name"
-              />
-              <button class="btn btn-success">Submit New Patient</button>
+              <input type="text" class="form-control" v-model="doctor" placeholder="Doctor Name" />
+              <button class="btn btn-success" id="btn">Submit New Patient</button>
             </form>
           </div>
         </div>
@@ -95,9 +65,7 @@ import axios from "axios";
 export default {
   mounted() {},
 
-  props: [
-      "template"
-  ],
+  props: ["template"],
 
   data() {
     return {
@@ -115,8 +83,9 @@ export default {
 
   watch: {
     phone_number() {
-      this.phone_number = this.phone_number.replace(/[^0-9]/g, "")
-      .replace (/^(\d{3})?(\d{3})?(\d{4})/g, "($1) $2-$3");
+      this.phone_number = this.phone_number
+        .replace(/[^0-9]/g, "")
+        .replace(/^(\d{3})?(\d{3})?(\d{4})/g, "($1) $2-$3");
     }
   },
 
@@ -171,20 +140,21 @@ export default {
 } */
 
 .form-control {
-    width: 50%;
-    margin: 0 auto;
+  width: 50%;
+  margin: 0 auto;
 }
 
 .container {
   width: 100%;
-
 }
 
-.infected-box, .admitted-box{
+.infected-box,
+.admitted-box {
   text-align: center !important;
 }
 .btn {
   color: black;
   margin: 10px;
+  margin-left: 42%;
 }
 </style>
