@@ -17,8 +17,6 @@
 
 <style>
 body {
-  background: url(../assets/covid-bkgrd.jpg);
-  background-size: 100%;
   background-repeat: no-repeat;
   text-align: center;
   font-size: 20px;
@@ -36,9 +34,8 @@ body {
   border-radius: 20px;
   width: 500px;
   height: 500px;
-  margin: 0 auto;
-  margin-top: 20%;
-  padding: 100px;
+   margin-top: 10%;
+  padding: 60px;
 }
 
 #bubbles-two {

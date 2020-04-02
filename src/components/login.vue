@@ -51,10 +51,11 @@ export default {
 
 <style>
 body {
-  background: url(../assets/covid-bkgrd.jpg);
-  background-size: 100%;
+  width: 100%;
+  height: 100%;
+  background-image: url(../assets/covid-bkgrd.jpg);
   background-repeat: no-repeat;
-  text-align: center;
+  background-size: cover;
 }
 
 .logo {
@@ -69,9 +70,9 @@ body {
   border: 1px solid #cccccc;
   border-radius: 20px;
   width: 500px;
-  margin: 0 auto;
-  margin-top: 20%;
-  padding: 100px;
+  margin: 0px auto;
+  margin-top: 10%;
+  padding: 60px;
 }
 
 #bubbles {
@@ -108,5 +109,8 @@ h6 {
   color: #f9a214;
   margin-top: 20px;
   font-size: 16px;
+}
+
+@media only screen and (max-width: 600px and down) {
 }
 </style>

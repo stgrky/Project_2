@@ -18,10 +18,12 @@ As a physician I would like easy access to COVID-19 patient results across the c
 
 <br>
 
+## USAGE
+
 ## FEATURES
 
 1. Clients are able to login to patient database by providing their email and password.
-    * 
+    * If user is new, ability to signup. 
 
 
 
