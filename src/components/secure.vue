@@ -13,33 +13,35 @@
     <!-- If Search Returns Results, Run This Table -->
     <div v-if="search">
       <div class="table-responsive">
-        <table class="table-hover">
-          <thead>
-            <tr>
-              <th>Id</th>
-              <th>Name</th>
-              <th>Phone Number</th>
-              <th>City</th>
-              <th>Symptoms</th>
-              <th>Infected</th>
-              <th>Treatment</th>
-              <th>Admitted</th>
-              <th>Doctor</th>
-            </tr>
-          </thead>
-          <tbody>
-            <td>{{patients.id}}</td>
-            <td>{{patients.name}}</td>
-            <td>{{patients.phone_number}}</td>
-            <td>{{patients.city}}</td>
-            <td>{{patients.symptoms}}</td>
-            <td>{{patients.infected}}</td>
-            <td>{{patients.treatment}}</td>
-            <td>{{patients.admitted}}</td>
-            <td>{{patients.doctor}}</td>
-          </tbody>
-        </table>
-      </div>
+            <table class="table-hover">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Phone Number</th>
+                        <th>City</th>
+                        <th>Symptoms</th>
+                        <th>Infected</th>
+                        <th>Treatment</th>
+                        <th>Admitted</th>
+                        <th>Doctor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <td> {{patients.id}} </td>
+                    <td> {{patients.name}} </td>
+                    <td> {{patients.lastName}} </td>
+                    <td> {{patients.phone_number}} </td>
+                    <td> {{patients.city}} </td>
+                    <td> {{patients.symptoms}} </td>
+                    <td> {{patients.infected}} </td>
+                    <td> {{patients.treatment}} </td>
+                    <td> {{patients.admitted}} </td>
+                    <td> {{patients.doctor}} </td>
+                </tbody>
+            </table>
+      </div>      
     </div>
 
     <div v-if="!flag">
@@ -50,7 +52,8 @@
             <tr>
               <td></td>
               <th>Id</th>
-              <th>Name</th>
+              <th>First Name</th>
+              <th>Last Name</th>
               <th>Phone Number</th>
               <th>City</th>
               <th>Symptoms</th>
@@ -72,6 +75,7 @@
 
               <td>{{ item.id }}</td>
               <td>{{ item.name }}</td>
+              <td>{{ item.lastName }}</td>
               <td>{{ item.phone_number }}</td>
               <td>{{ item.city }}</td>
               <td>{{ item.symptoms }}</td>
@@ -137,6 +141,7 @@ export default {
   },
   methods: {
     deletePatient(btnID) {
+<<<<<<< HEAD
       axios
         .delete(`/api/patient/${btnID}`)
         .then(response => {
@@ -146,6 +151,16 @@ export default {
           console.log("error: ", error);
         });
       location.reload(); // reloads to login page!!!
+=======
+      axios.delete(`/api/patient/${btnID}`)
+      .then(response => {
+        console.log("response: ", response);
+        this.$router.push("/secure"); // this does not work :(
+      })    
+      .catch(function(error) {
+        console.log("error: ", error);
+      });
+>>>>>>> ba418217d58000f301bd1a06e2def7d0ca48bc47
     }
   }
 };
