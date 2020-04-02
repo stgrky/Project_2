@@ -11,7 +11,7 @@
       placeholder="Password"
     />
     <button id="bubbles-two" type="button" v-on:click="login()">Login</button>
-
+    
     <router-link to="/signUp" id="new-login">Create New Login</router-link>
 
     <h6 class="covid">A COVID-19 PATIENT DATABASE</h6>
@@ -104,7 +104,7 @@ body {
 }
 /* new login link */
 #new-login {
-  margin-left: 25%;
+  margin: 25%;
 }
 
 /* covid db text */
