@@ -1,5 +1,6 @@
 <template>
   <div id="secure">
+    <img class="logo-two" src="../assets/c19-logo.jpg" alt="c19 logo" />
     <div>
       <h1>Patient List - {{ search }}</h1>
       <h4>Patient Search</h4>
@@ -152,6 +153,7 @@ export default {
 
 
 <style>
+/* container */
 #secure {
   background-color: #ffffff;
   border: 1px solid #cccccc;
@@ -159,25 +161,37 @@ export default {
   margin-top: 10%;
 }
 
+.logo-two {
+  width: 42px;
+  display: block;
+  float: right;
+}
+
+/* Patient Search text */
 h4 {
   text-align: center;
 }
 
-h5{
+/* If patient not found text */
+h5 {
   font-size: 16px !important;
 }
 
-.table-responsive{
+/* column names */
+.table-responsive {
   margin-top: 5%;
 }
-
+/* ------------------------------- */
+/* table data styling */
 .single-patient {
   width: 250px;
   border: 3px solid black;
 }
+
 li {
   list-style-type: none;
 }
+
 td,
 th {
   padding-left: 15px;
