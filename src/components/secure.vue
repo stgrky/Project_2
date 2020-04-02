@@ -125,12 +125,15 @@ export default {
     this.patients = results;
     this.flag = true;
   },
+
+  // Delete Patient Functionality
   methods: {
     deletePatient(btnID) {
       axios.delete(`/api/patient/${btnID}`)
       .then(response => {
         console.log("response: ", response);
-        this.$router.push("/secure"); // this does not work :(
+        alert("Patient Deleted!");
+        this.$router.push("/login"); // try number two: to "login" instead of secure again
       })    
       .catch(function(error) {
         console.log("error: ", error);
