@@ -4,6 +4,8 @@
     <div class="row justify-center-content">
       <div class="col-md-12">
         <div class="card">
+          <router-link to="/secure" id="secureButton">Back to Patient List</router-link>
+
           <div class="card-header">
             New Patient
             <strong>: {{ name }} {{lastName}}</strong>

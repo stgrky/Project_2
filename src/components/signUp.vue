@@ -4,6 +4,8 @@
     <div class="row justify-center-content">
       <div class="col-md-12">
         <div class="card">
+          <router-link to="/">Back to Login Page</router-link>
+
           <div class="card-header">
             New User Login
             <strong>: {{ newUserID }}</strong>
