@@ -110,7 +110,7 @@ www.kctv5.com
 
 ### PREVIEW
 
-![image](will insert image here)
+![image]()
 
 <br>
 
