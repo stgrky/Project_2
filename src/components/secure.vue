@@ -129,7 +129,6 @@ export default {
   // Delete Patient Functionality
   methods: {
     deletePatient(btnID) {
-<<<<<<< HEAD
       axios.delete(`/api/patient/${btnID}`)
       .then(response => {
         console.log("response: ", response);
@@ -139,17 +138,6 @@ export default {
       .catch(function(error) {
         console.log("error: ", error);
       });
-=======
-      axios
-        .delete(`/api/patient/${btnID}`)
-        .then(response => {
-          console.log("response: ", response);
-          this.$router.push("/secure"); // this does not work :(
-        })
-        .catch(function(error) {
-          console.log("error: ", error);
-        });
->>>>>>> afef9ec7502b533c2ff15848d79858870847beae
     }
   }
 };
