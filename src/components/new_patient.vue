@@ -177,8 +177,12 @@ export default {
 
 .container {
   width: 100%;
+
 }
 
+.infected-box, .admitted-box{
+  text-align: center !important;
+}
 .btn {
   color: black;
   margin: 10px;

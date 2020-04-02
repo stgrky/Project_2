@@ -1,11 +1,10 @@
 
-# CORONAVIRUS (COVID-19) PATIENT DATABASE
+# C-19 A COVID-19 Patient Database
 
-<br>
 
 ## INTRODUCTION
 
-As a physician I would like easy access to COVID patient results across the state to ensure accurate tracking and reporting of tested patients.
+As a physician I would like easy access to COVID-19 patient results across the country to ensure accurate tracking and reporting of tested patients.
 
 <br>
 
@@ -22,9 +21,32 @@ As a physician I would like easy access to COVID patient results across the stat
 
 ## FEATURES
 
-1. Clients are able to login to patient database by providing their email and password.
+1. Users are able to login to patient database by providing their email and password.
+    * Or users can signup for access
 
+2. Users can search for existing patients or add a new one with the following information:
 
+    a. Id #
+
+    b. Patient fist and last name
+
+    c.  Phone no.
+
+    d. City
+
+    e. Symptoms
+    
+    f. Infection status
+
+    g. Treatment
+
+    h. Admission status
+
+    i. Doctor
+
+3. If a specific patient needs to be removed, a button is available to do so.
+
+4. Upon logging out, users can access the CDC website or choose to return to login page.
 
 <br>
 
@@ -64,9 +86,9 @@ Grant Kyle
 
 Kendra Kwoka
 
-Arman Taghehchian
-
 Leandra Turner
+
+Arman Taghehchian
 
 
 ### PREVIEW
