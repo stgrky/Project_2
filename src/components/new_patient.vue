@@ -6,7 +6,7 @@
         <div class="card">
           <div class="card-header">
             New Patient
-            <strong>: {{ first_name }} {{last_name}}</strong>
+            <strong>: {{ name }} {{lastName}}</strong>
           </div>
 
           <div class="card-body" id="myapp">
@@ -14,13 +14,13 @@
               <input
                 type="text"
                 class="form-control"
-                v-model="first_name"
+                v-model="name"
                 placeholder="First Name"
               />
               <input
                 type="text"
                 class="form-control"
-                v-model="last_name"
+                v-model="lastName"
                 placeholder="Last Name"
               />
               <input
@@ -99,8 +99,8 @@ export default {
 
   data() {
     return {
-      first_name: "",
-      last_name: "",
+      name: "",
+      lastName: "",
       phone_number: "",
       city: "",
       symptoms: "",
@@ -123,8 +123,8 @@ export default {
     addPatient(event) {
       event.preventDefault();
       let newPatient = {
-        first_name: this.first_name,
-        last_name: this.last_name,
+        name: this.name,
+        lastName: this.lastName,
         phone_number: parseInt(this.phone_number),
         city: this.city,
         symptoms: this.symptoms,
