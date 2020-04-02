@@ -9,12 +9,22 @@ As a physician I would like easy access to COVID patient results across the stat
 <br>
 
 ## TABLE OF CONTENTS
+<<<<<<< HEAD
 1. [USAGE](#usage)
 2. [FEATURES](#features)
 3. [INSTALLATION](#installation)
 4. [PREVIEW](#preview)
 5. [RESOURCES](#resources)
 6. [BADGES](#badges)
+=======
+
+1. [FEATURES](#features)
+2. [INSTALLATION](#installation)
+3. [CONTRIBUTIONS](#contributions)
+4. [PREVIEW](#preview)
+4. [RESOURCES](#resources)
+5. [BADGES](#badges)
+>>>>>>> db8f8139b84176fbd3f2dc73b3aca9a8023fec7c
 
 <br>
 
@@ -67,6 +77,11 @@ Arman Taghehchian
 Leandra Turner
 
 
+### PREVIEW
+
+
+<br>
+
 ## RESOURCES
 
 
@@ -75,7 +90,7 @@ Leandra Turner
 
 ### PREVIEW
 
-![image](will insert image here)
+![image](src/assets/preview.png)
 
 <br>
 
