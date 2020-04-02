@@ -126,14 +126,14 @@ export default {
     this.flag = true;
   },
 
-  // Delete Patient Functionality
+  // Delete Patient 
   methods: {
     deletePatient(btnID) {
       axios.delete(`/api/patient/${btnID}`)
+      // eslint-disable-next-line no-unused-vars
       .then(response => {
-        console.log("response: ", response);
         alert("Patient Deleted!");
-        this.$router.push("/login"); // try number two: to "login" instead of secure again
+        this.$router.replace("/"); // try number two: to "login" instead of secure again
       })    
       .catch(function(error) {
         console.log("error: ", error);
