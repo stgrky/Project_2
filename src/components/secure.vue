@@ -151,6 +151,10 @@ export default {
   margin-top: 10%;
 }
 
+h1{
+  text-align:left;
+}
+
 .logo-two {
   width: 42px;
   display: block;

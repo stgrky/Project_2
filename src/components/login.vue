@@ -104,7 +104,7 @@ body {
 }
 /* new login link */
 #new-login {
-  margin-left: 30%;
+  margin-left: 25%;
 }
 
 /* covid db text */
