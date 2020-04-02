@@ -97,7 +97,7 @@ export default {
   computed: {
     filteredPatients: function() {
       let filtered = this.allPatients.filter(value => {
-        return value.name.match(new RegExp(this.search, "i")); //?case insensative, happen anywhere
+        return value.name.match(new RegExp(this.search, "i")); // Is Case-insensitive
       });
       return filtered.sort((a, b) => {
         return a.name - b.name;
@@ -105,6 +105,7 @@ export default {
     }
   },
   mounted() {
+    // Gets data
     axios
       .get("/api/patients")
       .then(response => {
@@ -115,7 +116,7 @@ export default {
         console.log("Error: ", err);
       });
   },
-
+  // Patient Search
   patientSearch() {
     axios.get("/api/patients").then(response => (this.info = response.data));
     const searchData = this.info;
@@ -126,14 +127,14 @@ export default {
     this.flag = true;
   },
 
-  // Delete Patient Functionality
+  // Delete Patient 
   methods: {
     deletePatient(btnID) {
       axios.delete(`/api/patient/${btnID}`)
+      // eslint-disable-next-line no-unused-vars
       .then(response => {
-        console.log("response: ", response);
         alert("Patient Deleted!");
-        this.$router.push("/login"); // try number two: to "login" instead of secure again
+        location.reload("/");
       })    
       .catch(function(error) {
         console.log("error: ", error);

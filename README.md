@@ -1,12 +1,6 @@
 
-# C19 
-# A COVID-19 Patient Database
+# C-19 A COVID-19 Patient Database
 
-![covidPic](\src\assets\preview.png)
-
-
-
-<br>
 
 ## INTRODUCTION
 
@@ -25,35 +19,34 @@ As a physician I would like easy access to COVID-19 patient results across the c
 
 <br>
 
-
 ## FEATURES
 
 1. Users are able to login to patient database by providing their email and password.
-    * Or new users can sign up for access
+    * Or users can signup for access
 
-2. Users have the ability to search for existing patients or add new ones.
-   The following details can be added: 
+2. Users can search for existing patients or add a new one with the following information:
 
-    a. Patient Full Name
+    a. Id #
 
-    b. Phone #
+    b. Patient fist and last name
 
-    c. Location of patient
+    c.  Phone no.
 
-    d. Symptoms
+    d. City
 
-    e. Infection status
+    e. Symptoms
+    
+    f. Infection status
 
-    f. Treatment
+    g. Treatment
 
-    g. Hospital admission
+    h. Admission status
 
-    h. Attending physician 
+    i. Doctor
 
-    **If a patient was reported in error, the user can choose a particular person and remove them.**
+3. If a specific patient needs to be removed, a button is available to do so.
 
-
-3. Upon logging out of the database, a link to the CDC website is available along with the ability to return to the login page.
+4. Upon logging out, users can access the CDC website or choose to return to login page.
 
 <br>
 
@@ -95,10 +88,12 @@ Kendra Kwoka
 
 Leandra Turner
 
-<br>
+Arman Taghehchian
+
 
 ### PREVIEW
 
+![covidPic](\src\assets\preview.png)
 
 <br>
 
