@@ -133,7 +133,7 @@ export default {
       // eslint-disable-next-line no-unused-vars
       .then(response => {
         alert("Patient Deleted!");
-        this.$router.replace("/"); // try number two: to "login" instead of secure again
+        location.reload("/");
       })    
       .catch(function(error) {
         console.log("error: ", error);
