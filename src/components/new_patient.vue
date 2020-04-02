@@ -102,7 +102,8 @@ export default {
 
   watch: {
     phone_number() {
-      this.phone_number = this.phone_number.replace(/[^0-9]/g, "");
+      this.phone_number = this.phone_number.replace(/[^0-9]/g, "")
+      .replace (/^(\d{3})(\d{3})(\d{4})/g, "($1) $2-$3");
     }
   },
 
