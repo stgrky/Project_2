@@ -1,10 +1,6 @@
 
 # CORONAVIRUS (COVID-19) PATIENT DATABASE
 
-![covidPic](\src\assets\preview.png)
-
-
-
 <br>
 
 ## INTRODUCTION
@@ -75,6 +71,7 @@ Leandra Turner
 
 ### PREVIEW
 
+![covidPic](\src\assets\preview.png)
 
 <br>
 
