@@ -14,7 +14,7 @@
 
     <router-link to="/signUp" id="new-login">Create New Login</router-link>
 
-    <h6>A COVID-19 PATIENT DATABASE</h6>
+    <h6 class="covid">A COVID-19 PATIENT DATABASE</h6>
   </div>
 </template>
 
@@ -64,7 +64,7 @@ body {
   margin-right: auto;
   width: 50%;
 }
-
+/* container */
 #login {
   background-color: #ffffff;
   border: 1px solid #cccccc;
@@ -74,7 +74,7 @@ body {
   margin-top: 10%;
   padding: 60px;
 }
-
+/* username box */
 #bubbles {
   border-radius: 20px;
   outline: none;
@@ -83,10 +83,12 @@ body {
   margin: 10px auto;
 }
 
+/* password box */
 #password {
   padding: 5px;
 }
 
+/* login button */
 #bubbles-two {
   padding: 5px;
   border-radius: 20px;
@@ -95,22 +97,21 @@ body {
   width: 100px;
   outline: none;
 }
-
+/* login button */
 #bubbles-two:hover {
   background-color: #bf9000;
   outline: none;
 }
-
+/* new login link */
 #new-login {
   margin-left: 30%;
 }
 
-h6 {
+/* covid db text */
+.covid {
   color: #f9a214;
-  margin-top: 20px;
+  margin-top: 10% !important;
   font-size: 16px;
-}
-
-@media only screen and (max-width: 600px and down) {
+  text-align: center;
 }
 </style>
