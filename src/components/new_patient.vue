@@ -4,7 +4,10 @@
     <div class="row justify-center-content">
       <div class="col-md-12">
         <div class="card">
-          <div class="card-header">New Patient<strong> : {{ name }}</strong></div>
+          <div class="card-header">
+            New Patient
+            <strong>: {{ name }}</strong>
+          </div>
 
           <div class="card-body" id="myapp">
             <form @submit="addPatient">
@@ -18,7 +21,7 @@
                 type="text"
                 class="form-control bubbles-three"
                 v-model="phone_number"
-                placeholder="Phone Number"
+                placeholder="(XXX) XXX-XXXX"
               />
               <input
                 type="text"
@@ -34,8 +37,8 @@
               />
               <div class="infected-box">
                 <b-form-group label="Infected?">
-                  <b-form-radio class="form-control" v-model="infected" name="some-radios" value="true">Yes</b-form-radio>
-                  <b-form-radio class="form-control" v-model="infected" name="some-radios" value="false">No</b-form-radio>
+                  <b-form-radio v-model="infected" name="some-radios" value="true">Yes</b-form-radio>
+                  <b-form-radio v-model="infected" name="some-radios" value="false">No</b-form-radio>
                 </b-form-group>
 
                 <div class="mt-3">
@@ -43,11 +46,16 @@
                   <strong>{{ infected }}</strong>
                 </div>
               </div>
-              <input class="form-control" type="text" v-model="treatment" placeholder="Treatment" />
-              <div class="form-questions">
+              <input
+                class="form-control bubbles-three"
+                type="text"
+                v-model="treatment"
+                placeholder="Treatment"
+              />
+              <div class="admitted-box">
                 <b-form-group label="Admitted to Hospital?">
-                  <b-form-radio class="form-control" v-model="admitted" name="admitted-radio" value="true">Yes</b-form-radio>
-                  <b-form-radio class="form-control" v-model="admitted" name="admitted-radio" value="false">No</b-form-radio>
+                  <b-form-radio v-model="admitted" name="admitted-radio" value="true">Yes</b-form-radio>
+                  <b-form-radio v-model="admitted" name="admitted-radio" value="false">No</b-form-radio>
                 </b-form-group>
 
                 <div class="mt-3">
@@ -57,7 +65,7 @@
               </div>
               <input
                 type="text"
-                class="form-control"
+                class="form-control bubbles-three"
                 id="bubbles-three"
                 v-model="doctor"
                 placeholder="Doctor Name"
@@ -73,11 +81,11 @@
 
 <script>
 import axios from "axios";
+// import { Router } from 'express';
 
 // Mounting Data
 export default {
-  mounted() {
-  },
+  mounted() {},
 
   data() {
     return {
@@ -92,39 +100,50 @@ export default {
     };
   },
 
-// Post New Patient Data Back to DB
+  watch: {
+    phone_number() {
+      this.phone_number = this.phone_number.replace(/[^0-9]/g, "")
+      .replace (/^(\d{3})(\d{3})(\d{4})/g, "($1) $2-$3");
+    }
+  },
+
+  // Post New Patient Data Back to DB
   methods: {
     addPatient(event) {
       event.preventDefault();
       let newPatient = {
         name: this.name,
-        phone_number: parseInt(this.phone_number),
+        phone_number: this.phone_number,
         city: this.city,
         symptoms: this.symptoms,
         infected: this.infected,
         treatment: this.treatment,
-        admitted: this.admitted, 
+        admitted: this.admitted,
         doctor: this.doctor
       };
 
       // eslint-disable-next-line no-undef
-      axios.post("/api/patient", newPatient)
-      .then(response => {
-        console.log("response: ", response);
-        alert("New Patient Added!");
-      })
+      axios
+        .post("/api/patient", newPatient)
+        .then(response => {
+          console.log("response: ", response);
+          alert("New Patient Added!");
+          this.$router.push("/secure");
+          console.log("Success");
+        })
         //  { // THIS IS NOT WORKING!!!! GETTING ERROR FOR THIS ROUTE
-    
-      .catch(function(error) {
-        console.log("error: ", error);
-      });
+
+        .catch(function(error) {
+          console.log("error: ", error);
+        });
     }
   }
 };
 </script>
 
 <style>
-#yes, #no {
+#yes,
+#no {
   width: 15px;
 }
 
@@ -133,11 +152,15 @@ export default {
   padding: 5px;
   border-radius: 20px;
   margin: 10px;
-  width: 100px;
+  width: 80%;
   outline: none;
 }
 
+.container {
+  width: 100%;
+}
+
 .btn {
-    color: black;
+  color: black;
 }
 </style>

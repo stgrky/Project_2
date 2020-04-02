@@ -2,56 +2,27 @@
   <div id="login">
     <img class="logo" src="../assets/c19-logo.jpg" alt="c19 logo" />
 
-    <input id="bubbles" type="text" name="username" v-model="input.username" placeholder="Username" />
-    <input
-      id="bubbles"
-      type="password"
-      name="password"
-      v-model="input.password"
-      placeholder="Password"
-    />
-    <button id="bubbles-two" type="button" v-on:click="login()">Login</button>
+    <h3>You have now been logged out of the database.</h3>
 
-    <h6>A COVID-19 PATIENT DATABASE</h6>
+    <p>To return to login</p>
+
+    <button id="bubbles-login" type="button" v-on:click="login()">Login</button>
+
+    <h6>For the latest COVID-19 guidelines and information please visit the CDC website</h6>
+    <a href="https://www.cdc.gov/">CDC.gov</a>
+
   </div>
 </template>
 
-<script>
-export default {
-  name: "login",
-  data() {
-    return {
-      input: {
-        username: "",
-        password: ""
-      }
-    };
-  },
-  methods: {
-    login() {
-      if (this.input.username !== "" && this.input.password !== "") {
-        if (
-          this.input.username === this.$parent.mockAccount.username &&
-          this.input.password === this.$parent.mockAccount.password
-        ) {
-          this.$emit("authenticated", true);
-          this.$router.replace({ name: "secure" });
-        } else {
-          console.log("The username and / or password is incorrect");
-        }
-      } else {
-        console.log("A username and password must be present");
-      }
-    }
-  }
-};
-</script>
+
 
 <style>
 body {
   background: url(../assets/covid-bkgrd.jpg);
   background-size: 100%;
   background-repeat: no-repeat;
+  text-align: center;
+  font-size: 20px;
 }
 
 .logo {
@@ -69,18 +40,6 @@ body {
   margin: 0 auto;
   margin-top: 20%;
   padding: 100px;
-}
-
-#bubbles {
-  border-radius: 20px;
-  outline: none;
-  display: block;
-  padding: 5px;
-  margin: 10px auto;
-}
-
-#password {
-  padding: 5px;
 }
 
 #bubbles-two {

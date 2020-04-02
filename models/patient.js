@@ -17,7 +17,7 @@ module.exports = function(sequelize, DataTypes) {
           }
       },
       phone_number: {
-          type: DataTypes.BIGINT,
+          type: DataTypes.STRING,
       },
       city: DataTypes.STRING,
       symptoms: DataTypes.STRING,
