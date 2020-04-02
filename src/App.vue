@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-     <router-link v-if="authenticated" to="/login" v-on:click.native="logout()" replace>Logout</router-link>
+    <router-link v-if="authenticated" to="/login" v-on:click.native="logout()" replace>Logout</router-link>
     <router-view @authenticated="setAuthenticated" />
   </div>
 </template>
@@ -29,7 +29,6 @@ export default {
     },
     logout() {
       this.authenticated = false;
-      
     }
   }
 };
@@ -40,8 +39,8 @@ body {
   background-color: black;
 }
 
-#bubbles-out{
-      padding: 5px;
+#bubbles-out {
+  padding: 5px;
   border-radius: 20px;
   display: block;
   margin: 15px auto;

@@ -10,7 +10,6 @@
 
     <h6>For the latest COVID-19 guidelines and information please visit the CDC website</h6>
     <a href="https://www.cdc.gov/">CDC.gov</a>
-
   </div>
 </template>
 
@@ -59,7 +58,7 @@ body {
 h6 {
   text-align: center;
   color: #f9a214;
-  margin-top: 20%;
+  margin-top: 20px !important;
   font-size: 16px;
 }
 </style>
