@@ -13,22 +13,22 @@
     <!-- If Search Returns Results, Run This Table -->
     <div v-if="search">
       <div class="table-responsive">
-            <table class="table-hover">
-                <!-- removed table header here so that the header does NOT duplicate -->
-                <tbody>
-                    <td> {{patients.id}} </td>
-                    <td> {{patients.name}} </td>
-                    <td> {{patients.lastName}} </td>
-                    <td> {{patients.phone_number}} </td>
-                    <td> {{patients.city}} </td>
-                    <td> {{patients.symptoms}} </td>
-                    <td> {{patients.infected}} </td>
-                    <td> {{patients.treatment}} </td>
-                    <td> {{patients.admitted}} </td>
-                    <td> {{patients.doctor}} </td>
-                </tbody>
-            </table>
-      </div>      
+        <table class="table-hover">
+          <!-- removed table header here so that the header does NOT duplicate -->
+          <tbody>
+            <td>{{patients.id}}</td>
+            <td>{{patients.name}}</td>
+            <td>{{patients.lastName}}</td>
+            <td>{{patients.phone_number}}</td>
+            <td>{{patients.city}}</td>
+            <td>{{patients.symptoms}}</td>
+            <td>{{patients.infected}}</td>
+            <td>{{patients.treatment}}</td>
+            <td>{{patients.admitted}}</td>
+            <td>{{patients.doctor}}</td>
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <div v-if="!flag">
@@ -129,6 +129,7 @@ export default {
   // Delete Patient Functionality
   methods: {
     deletePatient(btnID) {
+<<<<<<< HEAD
       axios.delete(`/api/patient/${btnID}`)
       .then(response => {
         console.log("response: ", response);
@@ -138,6 +139,17 @@ export default {
       .catch(function(error) {
         console.log("error: ", error);
       });
+=======
+      axios
+        .delete(`/api/patient/${btnID}`)
+        .then(response => {
+          console.log("response: ", response);
+          this.$router.push("/secure"); // this does not work :(
+        })
+        .catch(function(error) {
+          console.log("error: ", error);
+        });
+>>>>>>> afef9ec7502b533c2ff15848d79858870847beae
     }
   }
 };
@@ -151,6 +163,10 @@ export default {
   border: 1px solid #cccccc;
   padding: 20px;
   margin-top: 10%;
+}
+
+h1 {
+  text-align: left;
 }
 
 .logo-two {
@@ -187,12 +203,5 @@ li {
 td,
 th {
   padding-left: 15px;
-}
-
-body {
-  background: url("../assets/covid-bkgrd.jpg");
-  /* background-size: 100%; */
-  background-repeat: repeat;
-  /* text-align: center; */
 }
 </style>

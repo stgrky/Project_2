@@ -4,7 +4,10 @@
     <div class="row justify-center-content">
       <div class="col-md-12">
         <div class="card">
-          <div class="card-header">New User Login<strong> : {{ newUserID }}</strong></div>
+          <div class="card-header">
+            New User Login
+            <strong>: {{ newUserID }}</strong>
+          </div>
 
           <div class="card-body" id="myNewLogin">
             <form @submit="SignUp">
@@ -21,8 +24,8 @@
                 v-model="password"
                 placeholder="password"
               />
-              
-              <button class="btn btn-success">Submit New User Login</button>
+
+              <button class="btn btn-success">Submit</button>
             </form>
           </div>
         </div>
@@ -36,31 +39,30 @@ import axios from "axios";
 
 // Mounting Data
 export default {
-  mounted() {
-  },
+  mounted() {},
 
   data() {
     return {
-        email: "",
-        password: ""
+      email: "",
+      password: ""
     };
   },
 
-// Post New Patient Data Back to DB
+  // Post New Patient Data Back to DB
   methods: {
     SignUp() {
-        let newUser = {
-            email: this.email,
-            password: this.password
-        };
-        axios.post("/api/user", newUser)
+      let newUser = {
+        email: this.email,
+        password: this.password
+      };
+      axios
+        .post("/api/user", newUser)
         .then(response => {
-            console.log("userResponse: ", response);
-            alert("New User Added!");
-
+          console.log("userResponse: ", response);
+          alert("New User Added!");
         })
         .catch(function(err) {
-            console.log(err);
+          console.log(err);
         });
     }
   }
@@ -68,7 +70,12 @@ export default {
 </script>
 
 <style>
-#yes, #no {
+.container {
+  margin-top: 20%;
+}
+
+#yes,
+#no {
   width: 15px;
 }
 
@@ -82,6 +89,6 @@ export default {
 }
 
 .btn {
-    color: black;
+  color: black;
 }
 </style>

@@ -2,16 +2,15 @@
   <div id="login">
     <img class="logo" src="../assets/c19-logo.jpg" alt="c19 logo" />
 
-    <h3>You have now been logged out of the database.</h3>
-
-    <p>To return to login</p>
+    <h3>You are now logged out.</h3>
 
     <!-- <button id="bubbles-login" type="button" v-on:click="login()">Login</button> -->
-    <router-link to="/"  replace>Logout</router-link>
+    <router-link class="return" to="/" replace>Return to login</router-link>
 
-
-    <h6>For the latest COVID-19 guidelines and information please visit the CDC website</h6>
-    <a href="https://www.cdc.gov/">CDC.gov</a>
+    <h6 class="cdc">
+      For the latest COVID-19 guidelines and information please visit
+      <a href="https://www.cdc.gov/">CDC.gov</a>
+    </h6>
   </div>
 </template>
 
@@ -19,15 +18,11 @@
 export default {
   name: "Patients",
   data() {
-    return {
-    };
+    return {};
   },
-  mounted() {
-  },
+  mounted() {},
   methods: {
-    logout() {
-
-    }
+    logout() {}
   }
 };
 </script>
@@ -35,11 +30,11 @@ export default {
 
 <style>
 body {
-  background: url(../assets/covid-bkgrd.jpg);
-  background-size: 100%;
+  width: 100%;
+  height: 100%;
+   background-image: url(../assets/covid-image.jpg);;
   background-repeat: no-repeat;
-  text-align: center;
-  font-size: 20px;
+  background-size: cover;
 }
 
 .logo {
@@ -48,35 +43,34 @@ body {
   width: 70px;
 }
 
+/* container */
 #login {
   background-color: #ffffff;
   border: 1px solid #cccccc;
   border-radius: 20px;
   width: 500px;
   height: 500px;
-  margin: 0 auto;
-  margin-top: 20%;
-  padding: 100px;
+  margin-top: 10%;
+  padding: 60px;
 }
 
-#bubbles-two {
-  padding: 5px;
-  border-radius: 20px;
-  display: block;
-  margin: 15px auto;
-  width: 100px;
-  outline: none;
+/* logged out text */
+h3 {
+  font-size: 22px !important;
+  text-align: center;
+  margin-top: 20% !important;
 }
 
-#bubbles-two:hover {
-  background-color: #bf9000;
-  outline: none;
+/* return to login link */
+.return {
+  margin-left: 35%;
 }
 
-h6 {
+/* CDC link and text */
+.cdc {
   text-align: center;
   color: #f9a214;
-  margin-top: 20px !important;
+  margin-top: 25% !important;
   font-size: 16px;
 }
 </style>
