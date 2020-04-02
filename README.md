@@ -4,7 +4,7 @@
 
 ## INTRODUCTION
 
-As a physician I would like easy access to COVID patient results across the state to ensure accurate tracking and reporting of tested patients.
+As a physician I would like easy access to COVID-19 patient results across the country to ensure accurate tracking and reporting of tested patients.
 
 <br>
 
@@ -21,6 +21,7 @@ As a physician I would like easy access to COVID patient results across the stat
 ## FEATURES
 
 1. Clients are able to login to patient database by providing their email and password.
+    * 
 
 
 
@@ -61,8 +62,6 @@ As a physician I would like easy access to COVID patient results across the stat
 Grant Kyle
 
 Kendra Kwoka
-
-Arman Taghehchian
 
 Leandra Turner
 
