@@ -14,20 +14,7 @@
     <div v-if="search">
       <div class="table-responsive">
             <table class="table-hover">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Phone Number</th>
-                        <th>City</th>
-                        <th>Symptoms</th>
-                        <th>Infected</th>
-                        <th>Treatment</th>
-                        <th>Admitted</th>
-                        <th>Doctor</th>
-                    </tr>
-                </thead>
+                <!-- removed table header here so that the header does NOT duplicate -->
                 <tbody>
                     <td> {{patients.id}} </td>
                     <td> {{patients.name}} </td>
@@ -72,7 +59,6 @@
                   class="btn btn-success"
                 >Delete Patient {{ item.id }}</button>
               </td>
-
               <td>{{ item.id }}</td>
               <td>{{ item.name }}</td>
               <td>{{ item.lastName }}</td>
@@ -198,5 +184,12 @@ li {
 td,
 th {
   padding-left: 15px;
+}
+
+body {
+  background: url("../assets/covid-bkgrd.jpg");
+  /* background-size: 100%; */
+  background-repeat: repeat;
+  /* text-align: center; */
 }
 </style>

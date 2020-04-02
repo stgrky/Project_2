@@ -125,7 +125,7 @@ export default {
       let newPatient = {
         name: this.name,
         lastName: this.lastName,
-        phone_number: parseInt(this.phone_number),
+        phone_number: this.phone_number,
         city: this.city,
         symptoms: this.symptoms,
         infected: this.infected,
@@ -170,6 +170,7 @@ export default {
 
 .form-control {
     width: 50%;
+    margin: 0 auto;
 }
 
 .container {
@@ -178,5 +179,6 @@ export default {
 
 .btn {
   color: black;
+  margin: 10px;
 }
 </style>
