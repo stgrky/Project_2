@@ -93,7 +93,7 @@ Arman Taghehchian
 
 ### PREVIEW
 
-![covidPic](\src\assets\preview.png)
+![covidPic](./src/assets/preview.png)
 
 <br>
 
