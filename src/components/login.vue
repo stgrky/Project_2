@@ -12,7 +12,7 @@
     />
     <button id="bubbles-two" type="button" v-on:click="login()">Login</button>
 
-    <router-link to="/signUp">Create New Login</router-link>
+    <router-link to="/signUp" id="new-login">Create New Login</router-link>
 
     <h6>A COVID-19 PATIENT DATABASE</h6>
   </div>
@@ -100,8 +100,8 @@ body {
   outline: none;
 }
 
-a {
-  margin-left: 100px;
+#new-login {
+  margin-left: 30%;
 }
 
 h6 {
